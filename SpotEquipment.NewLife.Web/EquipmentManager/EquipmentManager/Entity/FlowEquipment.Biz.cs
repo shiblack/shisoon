@@ -144,6 +144,16 @@ namespace NewLife.Cube.Entity
 
             return exp;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public static int GetSpotID(int id)
+        {
+
+            return id;
+        }
         #endregion
 
         #region 扩展操作
