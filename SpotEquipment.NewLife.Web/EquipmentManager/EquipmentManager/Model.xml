@@ -1,50 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Tables Version="9.9.6806.43122" NameSpace="XCode.Membership" ConnName="Membership" Output="" BaseClass="Entity">
-  <Table Name="User" Description="用户" DbType="SqlServer" RenderGenEntity="true">
+<Tables Version="9.9.6870.42458" NameSpace="XCode.Membership" ConnName="Membership" Output="" BaseClass="Entity">
+  <Table Name="FlowEquipment" DbType="SqlServer">
     <Columns>
       <Column Name="ID" DataType="Int32" Identity="True" PrimaryKey="True" Description="编号" />
-      <Column Name="Name" DataType="String" Master="True" Nullable="False" Description="名称。登录用户名" />
-      <Column Name="Password" DataType="String" Description="密码" />
-      <Column Name="DisplayName" DataType="String" Description="昵称" />
-      <Column Name="Sex" DataType="Int32" Description="性别。未知、男、女" Type="SexKinds" />
-      <Column Name="Mail" DataType="String" Description="邮件" />
-      <Column Name="Mobile" DataType="String" Description="手机" />
-      <Column Name="Code" DataType="String" Description="代码。身份证、员工编号等" />
-      <Column Name="Avatar" DataType="String" Length="200" Description="头像" />
-      <Column Name="RoleID" DataType="Int32" Description="角色。主要角色" />
-      <Column Name="RoleIDs" DataType="String" Length="200" Description="角色组。次要角色集合" />
-      <Column Name="Online" DataType="Boolean" Description="在线" />
-      <Column Name="Enable" DataType="Boolean" Description="启用" />
-      <Column Name="Logins" DataType="Int32" Description="登录次数" />
-      <Column Name="LastLogin" DataType="DateTime" Description="最后登录" />
-      <Column Name="LastLoginIP" DataType="String" Description="最后登录IP" />
-      <Column Name="RegisterTime" DataType="DateTime" Description="注册时间" />
-      <Column Name="RegisterIP" DataType="String" Description="注册IP" />
+      <Column Name="Number1" DataType="Int32" Nullable="True" Description="设备编号" />
+      <Column Name="SpotEquipmentNumber" DataType="String" RawType="nchar(10)" Length="10" Description="现场设备编号" />
+      <Column Name="WMaterNumber" DataType="String" RawType="nchar(10)" Length="10" Description="水表编号" />
+      <Column Name="CustNumber" DataType="String" RawType="nchar(10)" Length="10" Description="客户编号" />
+      <Column Name="Brand" DataType="String" RawType="nchar(20)" Length="20" Description="品牌" />
+      <Column Name="Caliber" DataType="String" RawType="nchar(10)" Length="10" Description="口径" />
+      <Column Name="Accuracy" DataType="String" RawType="nchar(10)" Length="10" Description="精度" />
+      <Column Name="RangeRatio" DataType="String" RawType="nchar(10)" Length="10" Description="量程比" />
+      <Column Name="MeasureRange" DataType="String" RawType="nchar(10)" Length="10" Description="测量范围" />
+      <Column Name="MaxIndication" DataType="String" RawType="nchar(10)" Length="10" Description="最大示值" />
+      <Column Name="ConnInterface" DataType="String" RawType="nchar(10)" Length="10" Description="通讯接口" />
+      <Column Name="ConversionCoefficient" DataType="String" RawType="nchar(10)" Length="10" Description="转换系数" />
+      <Column Name="VerificationPeriod" DataType="String" RawType="nchar(10)" Length="10" Description="检定周期（年）" />
+      <Column Name="VerificationDay" DataType="DateTime" RawType="smalldatetime" Description="检定周期" />
+      <Column Name="ExpirationDateF" DataType="DateTime" RawType="smalldatetime" Description="有效期限" />
+      <Column Name="VerificationCertificateNumber" DataType="String" RawType="nchar(20)" Length="20" Description="鉴定证书编号" />
+      <Column Name="VerificationConclusion" DataType="String" Length="-1" Description="检定结论" />
     </Columns>
-    <Indexes>
-      <Index Columns="Name" Unique="True" />
-      <Index Columns="RoleID" />
-    </Indexes>
   </Table>
-  <Table Name="Role" Description="角色" RenderGenEntity="true">
+  <Table Name="IntelligentTerminal" DbType="SqlServer">
     <Columns>
       <Column Name="ID" DataType="Int32" Identity="True" PrimaryKey="True" Description="编号" />
-      <Column Name="Name" DataType="String" Master="True" Nullable="False" Description="名称" />
-      <Column Name="IsSystem" DataType="Boolean" Description="系统。用于业务系统开发使用，不受数据权限约束，禁止修改名称或删除" />
-      <Column Name="Remark" DataType="String" Description="说明" />
-      <Column Name="Permission" DataType="String" Length="500" Description="权限。对不同资源的权限，逗号分隔，每个资源的权限子项竖线分隔" />
-      <Column Name="CreateUserID" DataType="Int32" Description="创建用户" />
-      <Column Name="CreateIP" DataType="String" Description="创建地址" />
-      <Column Name="CreateTime" DataType="DateTime" Description="创建时间" />
-      <Column Name="UpdateUserID" DataType="Int32" Description="更新用户" />
-      <Column Name="UpdateIP" DataType="String" Description="更新地址" />
-      <Column Name="UpdateTime" DataType="DateTime" Description="更新时间" />
+      <Column Name="Number1" DataType="Int32" Description="设备编号" />
+      <Column Name="SpotEquipmentNumber" DataType="String" RawType="nchar(10)" Length="10" Description="现场设备编号" />
+      <Column Name="ConnMode" DataType="String" Description="通讯方式" />
+      <Column Name="TelephoneNumber" DataType="String" Description="电话号码" />
+      <Column Name="CostPackage" DataType="String" RawType="nchar(10)" Length="10" Description="费用套餐" />
+      <Column Name="RenewalCycle" DataType="String" RawType="nchar(10)" Length="10" Description="续费周期" />
+      <Column Name="ThisRenewalTime" DataType="DateTime" RawType="smalldatetime" Description="本次续费时间" />
     </Columns>
-    <Indexes>
-      <Index Columns="Name" Unique="True" />
-    </Indexes>
   </Table>
-  <Table Name="Menu" Description="菜单" BaseType="EntityTree" RenderGenEntity="true">
+  <Table Name="Menu" Description="菜单" DbType="SqlServer">
     <Columns>
       <Column Name="ID" DataType="Int32" Identity="True" PrimaryKey="True" Description="编号" />
       <Column Name="Name" DataType="String" Master="True" Nullable="False" Description="名称" />
@@ -60,68 +50,130 @@
       <Column Name="Remark" DataType="String" Length="200" Description="备注" />
     </Columns>
     <Indexes>
-      <Index Columns="Name" />
       <Index Columns="ParentID,Name" Unique="True" />
+      <Index Columns="Name" />
     </Indexes>
   </Table>
-  <Table Name="Log" Description="日志" ConnName="Log" RenderGenEntity="true">
+  <Table Name="PressureEquipment" DbType="SqlServer">
     <Columns>
       <Column Name="ID" DataType="Int32" Identity="True" PrimaryKey="True" Description="编号" />
-      <Column Name="Category" DataType="String" Description="类别" />
-      <Column Name="Action" DataType="String" Description="操作" />
-      <Column Name="LinkID" DataType="Int32" Description="链接" />
-      <Column Name="UserName" DataType="String" Description="用户名" />
-      <Column Name="CreateUserID" DataType="Int32" Description="用户编号" />
-      <Column Name="CreateIP" DataType="String" Description="IP地址" />
-      <Column Name="CreateTime" DataType="DateTime" Description="时间" />
-      <Column Name="Remark" DataType="String" Length="500" Description="详细信息" />
+      <Column Name="Number1" DataType="Int32" Nullable="True" Description="设备编号" />
+      <Column Name="SpotEquipmentNumber" DataType="String" RawType="nchar(10)" Length="10" Description="现场设备编号" />
+      <Column Name="PrecisionGrade" DataType="String" RawType="nchar(10)" Length="10" Description="精度等级" />
+      <Column Name="RangeMin" DataType="String" RawType="nchar(10)" Length="10" Description="量程下限" />
+      <Column Name="RangeMax" DataType="String" RawType="nchar(10)" Length="10" Description="量程上限" />
+      <Column Name="VerificationPeriod" DataType="String" RawType="nchar(10)" Length="10" Description="检定周期(年)" />
+      <Column Name="VerificationDay" DataType="DateTime" RawType="smalldatetime" Description="检定日期" />
+      <Column Name="ExpirationDate" DataType="DateTime" RawType="smalldatetime" Description="有效期限" />
+      <Column Name="VerificationCertificateNumber" DataType="String" RawType="nchar(20)" Length="20" Description="检定证书编号" />
+      <Column Name="VerificationConclusion" DataType="String" RawType="nchar(10)" Length="10" Description="检定结论" />
     </Columns>
-    <Indexes>
-      <Index Columns="Category" />
-      <Index Columns="CreateUserID" />
-      <Index Columns="CreateTime" />
-    </Indexes>
   </Table>
-  <Table Name="UserOnline" Description="用户在线" ConnName="Log">
+  <Table Name="Role" Description="角色" DbType="SqlServer">
     <Columns>
       <Column Name="ID" DataType="Int32" Identity="True" PrimaryKey="True" Description="编号" />
-      <Column Name="UserID" DataType="Int32" Description="用户" />
-      <Column Name="Name" DataType="String" Master="True" Description="名称" />
-      <Column Name="SessionID" DataType="String" Description="会话。Web的SessionID或Server的会话编号" />
-      <Column Name="Times" DataType="Int32" Description="次数" />
-      <Column Name="Page" DataType="String" Description="页面" />
-      <Column Name="Status" DataType="String" Length="200" Description="状态" />
-      <Column Name="OnlineTime" DataType="Int32" Description="在线时间。本次在线总时间，秒" />
+      <Column Name="Name" DataType="String" Master="True" Nullable="False" Description="名称" />
+      <Column Name="IsSystem" DataType="Boolean" Description="系统。用于业务系统开发使用，不受数据权限约束，禁止修改名称或删除" />
+      <Column Name="Remark" DataType="String" Description="说明" />
+      <Column Name="Permission" DataType="String" Length="500" Description="权限。对不同资源的权限，逗号分隔，每个资源的权限子项竖线分隔" />
+      <Column Name="CreateUserID" DataType="Int32" Description="创建用户" />
       <Column Name="CreateIP" DataType="String" Description="创建地址" />
-      <Column Name="CreateTime" DataType="DateTime" Description="创建时间" />
-      <Column Name="UpdateTime" DataType="DateTime" Description="修改时间" />
+      <Column Name="CreateTime" DataType="DateTime" Scale="3" Description="创建时间" />
+      <Column Name="UpdateUserID" DataType="Int32" Description="更新用户" />
+      <Column Name="UpdateIP" DataType="String" Description="更新地址" />
+      <Column Name="UpdateTime" DataType="DateTime" Scale="3" Description="更新时间" />
     </Columns>
     <Indexes>
-      <Index Columns="UserID" />
-      <Index Columns="SessionID" />
-      <Index Columns="CreateTime" />
+      <Index Columns="Name" Unique="True" />
     </Indexes>
   </Table>
-  <Table Name="VisitStat" Description="访问统计" ConnName="Log">
+  <Table Name="SpotEuipments" DbType="SqlServer">
     <Columns>
       <Column Name="ID" DataType="Int32" Identity="True" PrimaryKey="True" Description="编号" />
-      <Column Name="Level" DataType="Int32" Description="层级" Type="XCode.Statistics.StatLevels" />
-      <Column Name="Time" DataType="DateTime" Description="时间" />
-      <Column Name="Page" DataType="String" Nullable="False" Description="页面" />
-      <Column Name="Title" DataType="String" Master="True" Description="标题" />
-      <Column Name="Times" DataType="Int32" Description="次数" />
-      <Column Name="Users" DataType="Int32" Description="用户" />
-      <Column Name="IPs" DataType="Int32" Description="IP" />
-      <Column Name="Error" DataType="Int32" Description="错误" />
-      <Column Name="Cost" DataType="Int32" Description="耗时。毫秒" />
-      <Column Name="MaxCost" DataType="Int32" Description="最大耗时。毫秒" />
-      <Column Name="CreateTime" DataType="DateTime" Description="创建时间" />
-      <Column Name="UpdateTime" DataType="DateTime" Description="更新时间" />
-      <Column Name="Remark" DataType="String" Length="500" Description="详细信息" />
+      <Column Name="Number" DataType="Int32" Nullable="True" Description="设备编号" />
+      <Column Name="OwnedEnterprise" DataType="String" Description="所属企业" />
+      <Column Name="AssetNumber" DataType="String" Description="资产编码" />
+      <Column Name="Name" DataType="String" RawType="nchar(10)" Master="True" Length="10" Description="名称" />
+      <Column Name="SpecificationModel" DataType="String" RawType="nchar(10)" Length="10" Description="规格型号" />
+      <Column Name="EquipmentType" DataType="String" RawType="nchar(10)" Length="10" Description="设备类型" />
+      <Column Name="Manufacturer" DataType="String" RawType="nchar(10)" Length="10" Description="生产厂家" />
+      <Column Name="DeviceSerialNumber" DataType="String" RawType="nchar(10)" Length="10" Description="设备序列号" />
+      <Column Name="Purpose" DataType="String" RawType="nchar(10)" Length="10" Description="用途" />
+      <Column Name="InstallationTime" DataType="DateTime" RawType="smalldatetime" Description="安装时间" />
+      <Column Name="IntstallationPerson" DataType="String" RawType="nchar(10)" Length="10" Description="安装人员" />
+      <Column Name="DetailedInstallPlace" DataType="String" RawType="nchar(50)" Description="详细安装地址" />
+      <Column Name="Position" DataType="String" Description="位置" />
+      <Column Name="LiveTips" DataType="String" Length="-1" Description="现场提示&lt;" />
+      <Column Name="GPSPosition" DataType="String" Description="GPS位置" />
+      <Column Name="LiveImage" DataType="String" RawType="nchar(10)" Length="10" Description="现场图片" />
+      <Column Name="EquipmentState" DataType="String" RawType="nchar(10)" Length="10" Description="设备状态" />
+      <Column Name="PowerSupplyMode" DataType="String" RawType="nchar(10)" Length="10" Description="供电方式" />
+      <Column Name="DiscardedTime" DataType="DateTime" RawType="smalldatetime" Description="报废时间" />
+      <Column Name="DiscardedReason" DataType="String" RawType="nchar(10)" Length="10" Description="报废原因" />
+      <Column Name="Remarks" DataType="String" Length="-1" Description="备注" />
+    </Columns>
+  </Table>
+  <Table Name="User" Description="用户" DbType="SqlServer">
+    <Columns>
+      <Column Name="ID" DataType="Int32" Identity="True" PrimaryKey="True" Description="编号" />
+      <Column Name="Name" DataType="String" Master="True" Nullable="False" Description="名称。登录用户名" />
+      <Column Name="Password" DataType="String" Description="密码" />
+      <Column Name="DisplayName" DataType="String" Description="昵称" />
+      <Column Name="Sex" DataType="Int32" Description="性别。未知、男、女" />
+      <Column Name="Mail" DataType="String" Description="邮件" />
+      <Column Name="Mobile" DataType="String" Description="手机" />
+      <Column Name="Code" DataType="String" Description="代码。身份证、员工编号等" />
+      <Column Name="Avatar" DataType="String" Length="200" Description="头像" />
+      <Column Name="RoleID" DataType="Int32" Description="角色。主要角色" />
+      <Column Name="RoleIDs" DataType="String" Length="200" Description="角色组。次要角色集合" />
+      <Column Name="Online" DataType="Boolean" Description="在线" />
+      <Column Name="Enable" DataType="Boolean" Description="启用" />
+      <Column Name="Logins" DataType="Int32" Description="登录次数" />
+      <Column Name="LastLogin" DataType="DateTime" Scale="3" Description="最后登录" />
+      <Column Name="LastLoginIP" DataType="String" Description="最后登录IP" />
+      <Column Name="RegisterTime" DataType="DateTime" Scale="3" Description="注册时间" />
+      <Column Name="RegisterIP" DataType="String" Description="注册IP" />
     </Columns>
     <Indexes>
-      <Index Columns="Page,Level,Time" Unique="True" />
-      <Index Columns="Level,Time" />
+      <Index Columns="Name" Unique="True" />
+      <Index Columns="RoleID" />
     </Indexes>
+  </Table>
+  <Table Name="UserConnect" Description="用户链接。第三方绑定" DbType="SqlServer">
+    <Columns>
+      <Column Name="ID" DataType="Int32" Identity="True" PrimaryKey="True" Description="编号" />
+      <Column Name="Provider" DataType="String" Description="提供商" />
+      <Column Name="UserID" DataType="Int32" Description="用户。本地用户" />
+      <Column Name="OpenID" DataType="String" Description="身份标识。用户名、OpenID" />
+      <Column Name="LinkID" DataType="Int64" Description="用户编号。第三方用户编号" />
+      <Column Name="NickName" DataType="String" Description="昵称" />
+      <Column Name="Avatar" DataType="String" Length="200" Description="头像" />
+      <Column Name="AccessToken" DataType="String" Length="500" Description="访问令牌" />
+      <Column Name="RefreshToken" DataType="String" Length="500" Description="刷新令牌" />
+      <Column Name="Expire" DataType="DateTime" Scale="3" Description="过期时间" />
+      <Column Name="Enable" DataType="Boolean" Description="启用" />
+      <Column Name="CreateUserID" DataType="Int32" Description="创建用户" />
+      <Column Name="CreateIP" DataType="String" Description="创建地址" />
+      <Column Name="CreateTime" DataType="DateTime" Scale="3" Description="创建时间" />
+      <Column Name="UpdateUserID" DataType="Int32" Description="更新用户" />
+      <Column Name="UpdateIP" DataType="String" Description="更新地址" />
+      <Column Name="UpdateTime" DataType="DateTime" Scale="3" Description="更新时间" />
+      <Column Name="Remark" DataType="String" Length="500" Description="备注" />
+    </Columns>
+    <Indexes>
+      <Index Columns="Provider,OpenID" Unique="True" />
+      <Index Columns="UserID" />
+    </Indexes>
+  </Table>
+  <Table Name="ValveEquipment" DbType="SqlServer">
+    <Columns>
+      <Column Name="ID" DataType="Int32" Identity="True" PrimaryKey="True" Description="编号" />
+      <Column Name="Number1" DataType="Int32" Nullable="True" Description="设备编号" />
+      <Column Name="SpotEquipmentNumber1" DataType="String" RawType="nchar(10)" Length="10" Description="现场设备编号" />
+      <Column Name="MaterialScience" DataType="String" RawType="nchar(10)" Length="10" Description="材质" />
+      <Column Name="Type" DataType="String" RawType="nchar(10)" Length="10" Description="类型" />
+      <Column Name="Caliber" DataType="String" RawType="nchar(10)" Length="10" Description="口径" />
+      <Column Name="Purpose1" DataType="String" Length="-1" Description="用途" />
+    </Columns>
   </Table>
 </Tables>
