@@ -4,7 +4,8 @@
  * 时间：2018-11-01 15:21:27
  * 版权：版权所有 (C) 新生命开发团队 2018
 */
-﻿using System;
+using EquipmentManager;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Xml.Serialization;
@@ -112,12 +113,7 @@ namespace NewLife.Cube.Entity
         [Description("精度")]
         [DataObjectField(false, false, true, 10)]
         [BindColumn(8, "Accuracy", "精度", null, "nchar(10)", 0, 0, true)]
-        public virtual String Accuracy
-        {
-            get { return _Accuracy; }
-            set { if (OnPropertyChanging("Accuracy", value)) { _Accuracy = value; OnPropertyChanged("Accuracy"); } }
-        }
-
+        public NewType Accuracy { get; set; }
         private String _RangeRatio;
         /// <summary>量程比</summary>
         [DisplayName("量程比")]
@@ -391,7 +387,7 @@ namespace NewLife.Cube.Entity
         String Caliber { get; set; }
 
         /// <summary></summary>
-        String Accuracy { get; set; }
+        NewType Accuracy { get; set; }
 
         /// <summary></summary>
         String RangeRatio { get; set; }
