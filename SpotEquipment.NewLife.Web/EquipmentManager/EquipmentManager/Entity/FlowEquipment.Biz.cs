@@ -107,8 +107,8 @@ namespace NewLife.Cube.Entity
         /// <param name="number">本设备的查找字段</param>
         /// <param name="value">本设备的值</param>
         /// <returns></returns>
-        [DataObjectMethod(DataObjectMethodType.Select,true)]
-        public static int GetSpotmentID(string number,object value)
+        [DataObjectMethod(DataObjectMethodType.Select, true)]
+        public static int GetSpotmentID(string number, object value)
         {
             return Convert.ToInt32(Find(number, value));
         }

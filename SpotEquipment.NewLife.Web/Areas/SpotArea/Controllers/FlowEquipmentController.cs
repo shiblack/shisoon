@@ -11,6 +11,7 @@ using System.Data.SqlClient;
 
 namespace SpotEquipment.NewLife.Web.Areas.SpotArea.Controllers
 {
+
     public class FlowEquipmentController : EntityController<FlowEquipment>
     {
         /// GET: SpotArea/Equipment
