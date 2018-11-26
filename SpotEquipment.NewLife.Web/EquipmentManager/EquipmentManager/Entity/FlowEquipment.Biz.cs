@@ -104,13 +104,13 @@ namespace NewLife.Cube.Entity
         /// <summary>
         /// 查找现场设备的ID
         /// </summary>
-        /// <param name="number">本设备的查找字段</param>
+        /// <param name="ID">本设备的查找字段</param>
         /// <param name="value">本设备的值</param>
         /// <returns></returns>
         [DataObjectMethod(DataObjectMethodType.Select, true)]
-        public static int GetSpotmentID(string number, object value)
+        public static int GetSpotmentID(string ID, object value)
         {
-            return Convert.ToInt32(Find(number, value));
+            return Convert.ToInt32(Find(ID, value));
         }
         ///// <summary>
         ///// 查询满足条件的记录总数，分页和排序无效，带参数是因为ObjectDataSource要求它跟Search统一
@@ -149,11 +149,7 @@ namespace NewLife.Cube.Entity
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public static int GetSpotID(int id)
-        {
-
-            return id;
-        }
+     
         #endregion
 
         #region 扩展操作

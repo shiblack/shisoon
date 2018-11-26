@@ -25,7 +25,8 @@ namespace SpotEquipment.NewLife.Web.Areas.SpotArea.Controllers
         //{
         //    return base.Find(key);
         //}
-        
+
+ 
         protected override IEnumerable<FlowEquipment> Search(Pager p)
         {
             var classid = p["Number1"].ToInt();

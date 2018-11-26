@@ -190,7 +190,6 @@
     <Content Include="Areas\SpotArea\Views\ValveEquipment\_List_Data.cshtml" />
     <Content Include="Areas\SpotArea\Views\ValveEquipment\_List_Toolbar.cshtml" />
     <Content Include="Areas\SpotArea\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\SpotArea\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\SpotArea\Views\FlowEquipment\_Form_Action.cshtml" />
     <Content Include="Areas\SpotArea\Views\IntellEquipment\_Form_Action.cshtml" />
     <Content Include="Areas\SpotArea\Views\PressEquipment\_Form_Action.cshtml" />
