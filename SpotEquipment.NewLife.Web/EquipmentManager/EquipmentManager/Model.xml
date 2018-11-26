@@ -107,7 +107,7 @@
       <Column Name="GPSPosition" DataType="String" Description="GPS位置" />
       <Column Name="LiveImage" DataType="String" RawType="nchar(10)" Length="10" Description="现场图片" />
       <Column Name="EquipmentState" DataType="String" RawType="nchar(10)" Length="10" Description="设备状态" />
-      <Column Name="PowerSupplyMode" DataType="String" RawType="nchar(10)" Length="10" Description="供电方式" />
+      <Column Name="PowerSupplyMode" DataType="String" RawType="nchar(10)" Length="10" Description="供电方式" Type="" />
       <Column Name="DiscardedTime" DataType="DateTime" RawType="smalldatetime" Description="报废时间" />
       <Column Name="DiscardedReason" DataType="String" RawType="nchar(10)" Length="10" Description="报废原因" />
       <Column Name="Remarks" DataType="String" Length="-1" Description="备注" />
