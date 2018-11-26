@@ -1,0 +1,122 @@
+﻿@model NewLife.Cube.Entity.FlowEquipment
+@using NewLife;
+@using XCode;
+@using XCode.Configuration;
+@{
+    var entity = Model;
+    var fields = ViewBag.Fields as IList<FieldItem>;
+    var isNew = (entity as IEntity).IsNullKey;
+}
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">设备编号</label>
+    <div class="input-group col-xs-9 col-sm-9">
+        @Html.TextBox("Number1", @entity.Number1, new { @class = "form-control", role="number" })
+    </div>
+</div>
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">现场设备编号</label>
+    <div class="input-group col-xs-9 col-sm-9">
+        <input class="form-control" id="SpotEquipmentNumber" name="SpotEquipmentNumber" type="text" value="@entity.SpotEquipmentNumber" />
+    </div>
+</div>
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">水表编号</label>
+    <div class="input-group col-xs-9 col-sm-9">
+        <input class="form-control" id="WMaterNumber" name="WMaterNumber" type="text" value="@entity.WMaterNumber" />
+    </div>
+</div>
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">客户编号</label>
+    <div class="input-group col-xs-9 col-sm-9">
+        <input class="form-control" id="CustNumber" name="CustNumber" type="text" value="@entity.CustNumber" />
+    </div>
+</div>
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">品牌</label>
+    <div class="input-group col-xs-9 col-sm-9">
+        <input class="form-control" id="Brand" name="Brand" type="text" value="@entity.Brand" />
+    </div>
+</div>
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">口径</label>
+    <div class="input-group col-xs-9 col-sm-9">
+        <input class="form-control" id="Caliber" name="Caliber" type="text" value="@entity.Caliber" />
+    </div>
+</div>
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">精度</label>
+    <div class="input-group col-xs-9 col-sm-9">
+        <input class="form-control" id="Accuracy" name="Accuracy" type="text" value="@entity.Accuracy" />
+    </div>
+</div>
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">量程比</label>
+    <div class="input-group col-xs-9 col-sm-9">
+        <input class="form-control" id="RangeRatio" name="RangeRatio" type="text" value="@entity.RangeRatio" />
+    </div>
+</div>
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">测量范围</label>
+    <div class="input-group col-xs-9 col-sm-9">
+        <input class="form-control" id="MeasureRange" name="MeasureRange" type="text" value="@entity.MeasureRange" />
+    </div>
+</div>
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">最大示值</label>
+    <div class="input-group col-xs-9 col-sm-9">
+        <input class="form-control" id="MaxIndication" name="MaxIndication" type="text" value="@entity.MaxIndication" />
+    </div>
+</div>
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">通讯接口</label>
+    <div class="input-group col-xs-9 col-sm-9">
+        <input class="form-control" id="ConnInterface" name="ConnInterface" type="text" value="@entity.ConnInterface" />
+    </div>
+</div>
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">转换系数</label>
+    <div class="input-group col-xs-9 col-sm-9">
+        <input class="form-control" id="ConversionCoefficient" name="ConversionCoefficient" type="text" value="@entity.ConversionCoefficient" />
+    </div>
+</div>
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">检定周期（年）</label>
+    <div class="input-group col-xs-9 col-sm-9">
+        <input class="form-control" id="VerificationPeriod" name="VerificationPeriod" type="text" value="@entity.VerificationPeriod" />
+    </div>
+</div>
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">检定周期</label>
+    <div class="input-group col-xs-9 col-sm-9">
+        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+        @Html.TextBox("VerificationDay", @entity.VerificationDay.ToFullString(""), new { @class = "form-control date form_datetime" })
+    </div>
+</div>
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">有效期限</label>
+    <div class="input-group col-xs-9 col-sm-9">
+        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+        @Html.TextBox("ExpirationDateF", @entity.ExpirationDateF.ToFullString(""), new { @class = "form-control date form_datetime" })
+    </div>
+</div>
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">鉴定证书编号</label>
+    <div class="input-group col-xs-9 col-sm-9">
+        <input class="form-control" id="VerificationCertificateNumber" name="VerificationCertificateNumber" type="text" value="@entity.VerificationCertificateNumber" />
+    </div>
+</div>
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">检定结论</label>
+    <div class="input-group col-xs-9 col-sm-9">
+        <textarea class="form-control" cols="20" id="VerificationConclusion" name="VerificationConclusion" rows="3">@entity.VerificationConclusion</textarea>
+    </div>
+</div>
+@Html.Partial("_Form_Footer", entity)
+@if (this.Has(PermissionFlags.Insert, PermissionFlags.Update))
+{
+    <div class="clearfix form-actions col-sm-12 col-md-12">
+        <label class="control-label col-xs-4 col-sm-5 col-md-5"></label>
+        <button type="submit" class="btn btn-success btn-sm"><i class="glyphicon glyphicon-@(isNew ? "plus" : "save")"></i><strong>@(isNew ? "新增" : "保存")</strong></button>
+        <button type="button" class="btn btn-danger btn-sm" onclick="history.go(-1);"><i class="glyphicon glyphicon-remove"></i><strong>取消</strong></button>
+    </div>
+}
