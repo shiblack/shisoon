@@ -81,6 +81,7 @@
     <Compile Include="Entity\SpotEuipments.cs" />
     <Compile Include="Entity\ValveEquipment.Biz.cs" />
     <Compile Include="Entity\ValveEquipment.cs" />
+    <Compile Include="NewType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
