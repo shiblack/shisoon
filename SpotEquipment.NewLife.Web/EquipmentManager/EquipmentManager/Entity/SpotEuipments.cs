@@ -14,12 +14,12 @@ using XCode.DataAccessLayer;
 
 namespace NewLife.Cube.Entity
 {
-    /// <summary></summary>
+    /// <summary>现场设备</summary>
     [Serializable]
     [DataObject]
-    [Description("")]
+    [Description("现场设备")]
     [BindIndex("PK_SpotEuipment", true, "ID")]
-    [BindTable("SpotEuipments", Description = "", ConnName = "Membership", DbType = DatabaseType.SqlServer)]
+    [BindTable("SpotEuipments", Description = "现场设备", ConnName = "Membership", DbType = DatabaseType.SqlServer)]
     public partial class SpotEuipments : ISpotEuipments
     {
         #region 属性

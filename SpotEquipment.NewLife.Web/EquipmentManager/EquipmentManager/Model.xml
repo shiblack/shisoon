@@ -11,7 +11,7 @@
       <Column Name="Caliber" DataType="String" RawType="nchar(10)" Length="10" Description="口径" />
       <Column Name="Accuracy" DataType="String" RawType="nchar(10)" Length="10" Description="精度" Type="EquipmentManager.NewType"/>
       <Column Name="RangeRatio" DataType="String" RawType="nchar(10)" Length="10" Description="量程比" />
-      <Column Name="MeasureRange" DataType="String" RawType="nchar(10)" Length="10" Description="测量范围" />
+      <Column Name="MeasureRange" DataType="String" RawType="nchar(10)" Length="10" Description="测量范围" Type="EquipmentManager.MerRange"/>
       <Column Name="MaxIndication" DataType="String" RawType="nchar(10)" Length="10" Description="最大示值" />
       <Column Name="ConnInterface" DataType="String" RawType="nchar(10)" Length="10" Description="通讯接口" />
       <Column Name="ConversionCoefficient" DataType="String" RawType="nchar(10)" Length="10" Description="转换系数" />

@@ -14,11 +14,11 @@ using XCode.DataAccessLayer;
 
 namespace NewLife.Cube.Entity
 {
-    /// <summary></summary>
+    /// <summary>智能终端</summary>
     [Serializable]
     [DataObject]
-    [Description("")]
-    [BindTable("IntelligentTerminal", Description = "", ConnName = "Membership", DbType = DatabaseType.SqlServer)]
+    [Description("智能终端")]
+    [BindTable("IntelligentTerminal", Description = "智能终端", ConnName = "Membership", DbType = DatabaseType.SqlServer)]
     public partial class IntelligentTerminal : IIntelligentTerminal
     {
         #region 属性
