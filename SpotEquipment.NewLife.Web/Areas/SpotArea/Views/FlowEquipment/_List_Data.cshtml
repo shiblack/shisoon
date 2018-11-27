@@ -1,0 +1,81 @@
+﻿@model IList<NewLife.Cube.Entity.FlowEquipment>
+@using NewLife;
+@using NewLife.Web;
+@using XCode;
+@using XCode.Configuration;
+@using System.Web.Mvc;
+@using System.Web.Mvc.Ajax;
+@using System.Web.Mvc.Html;
+@using System.Web.Routing;
+@{
+    var fact = ViewBag.Factory as IEntityOperate;
+    var page = ViewBag.Page as Pager;
+    var fields = ViewBag.Fields as IList<FieldItem>;
+    var enableSelect = this.EnableSelect();
+    //var provider = ManageProvider.Provider;
+}
+<table class="table table-bordered table-hover table-striped table-condensed">
+    <thead>
+        <tr>
+            @if (enableSelect)
+            {
+                <th class="text-center" style="width:10px;"><input type="checkbox" id="chkAll" title="全选" /></th>
+            }
+            <th class="text-center hidden-md hidden-sm hidden-xs"><a href="@Html.Raw(page.GetSortUrl("ID"))">编号</a></th>
+            <th class="text-center"><a href="@Html.Raw(page.GetSortUrl("Number1"))">设备编号</a></th>
+            <th class="text-center"><a href="@Html.Raw(page.GetSortUrl("SpotEquipmentNumber"))">现场设备编号</a></th>
+            <th class="text-center"><a href="@Html.Raw(page.GetSortUrl("WMaterNumber"))">水表编号</a></th>
+            <th class="text-center"><a href="@Html.Raw(page.GetSortUrl("CustNumber"))">客户编号</a></th>
+            <th class="text-center"><a href="@Html.Raw(page.GetSortUrl("Brand"))">品牌</a></th>
+            <th class="text-center"><a href="@Html.Raw(page.GetSortUrl("Caliber"))">口径</a></th>
+            <th class="text-center"><a href="@Html.Raw(page.GetSortUrl("Accuracy"))">精度</a></th>
+            <th class="text-center"><a href="@Html.Raw(page.GetSortUrl("RangeRatio"))">量程比</a></th>
+            <th class="text-center"><a href="@Html.Raw(page.GetSortUrl("MeasureRange"))">测量范围</a></th>
+            <th class="text-center"><a href="@Html.Raw(page.GetSortUrl("MaxIndication"))">最大示值</a></th>
+            <th class="text-center"><a href="@Html.Raw(page.GetSortUrl("ConnInterface"))">通讯接口</a></th>
+            <th class="text-center"><a href="@Html.Raw(page.GetSortUrl("ConversionCoefficient"))">转换系数</a></th>
+            <th class="text-center"><a href="@Html.Raw(page.GetSortUrl("VerificationPeriod"))">检定周期（年）</a></th>
+            <th class="text-center" style="min-width:134px;"><a href="@Html.Raw(page.GetSortUrl("VerificationDay"))">检定周期</a></th>
+            <th class="text-center" style="min-width:134px;"><a href="@Html.Raw(page.GetSortUrl("ExpirationDateF"))">有效期限</a></th>
+            <th class="text-center"><a href="@Html.Raw(page.GetSortUrl("VerificationCertificateNumber"))">鉴定证书编号</a></th>
+            @if (this.Has(PermissionFlags.Detail, PermissionFlags.Update, PermissionFlags.Delete))
+            {
+                <th class="text-center" style="min-width:100px;">操作</th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var entity in Model)
+        {
+            <tr>
+                @if (enableSelect)
+                {
+                    <td class="text-center"><input type="checkbox" name="keys" value="@entity.ID" /></td>
+                }
+                <td class="text-center hidden-md hidden-sm hidden-xs">@entity.ID</td>
+                <td class="text-right">@entity.Number1.ToString("n0")</td>
+                <td>@entity.SpotEquipmentNumber</td>
+                <td>@entity.WMaterNumber</td>
+                <td>@entity.CustNumber</td>
+                <td>@entity.Brand</td>
+                <td>@entity.Caliber</td>
+                <td>@entity.Accuracy</td>
+                <td>@entity.RangeRatio</td>
+                <td>@entity.MeasureRange</td>
+                <td>@entity.MaxIndication</td>
+                <td>@entity.ConnInterface</td>
+                <td>@entity.ConversionCoefficient</td>
+                <td>@entity.VerificationPeriod</td>
+                <td>@entity.VerificationDay.ToFullString("")</td>
+                <td>@entity.ExpirationDateF.ToFullString("")</td>
+                <td>@entity.VerificationCertificateNumber</td>
+                @if (this.Has(PermissionFlags.Detail, PermissionFlags.Update, PermissionFlags.Delete))
+                {
+                    <td class="text-center">
+                        @Html.Partial("_List_Data_Action", (Object)entity)
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>

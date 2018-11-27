@@ -184,6 +184,7 @@
     <Content Include="Areas\SpotArea\Views\IntellEquipment\_Form_Body.cshtml" />
     <Content Include="Areas\SpotArea\Views\SpotEquipment\_Form_Body.cshtml" />
     <Content Include="Areas\SpotArea\Views\ValveEquipment\_Form_Body.cshtml" />
+    <Content Include="Areas\SpotArea\Views\FlowEquipment\_List_Data.cshtml" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -191,17 +192,17 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="EquipmentManager\EquipmentManager\EquipmentManager.csproj">
-      <Project>{141667be-f7de-4cf6-907f-ffd34d4e7aa6}</Project>
-      <Name>EquipmentManager</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Analyzer Include="..\packages\Microsoft.DependencyValidation.Analyzers.0.9.0\analyzers\dotnet\cs\Microsoft.DependencyValidation.Analyzers.resources.dll" />
     <Analyzer Include="..\packages\Microsoft.DependencyValidation.Analyzers.0.9.0\analyzers\dotnet\Microsoft.DependencyValidation.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\SpotArea\Views\PressEquipment\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="EquipmentManager\EquipmentManager\EquipmentManager.csproj">
+      <Project>{141667be-f7de-4cf6-907f-ffd34d4e7aa6}</Project>
+      <Name>EquipmentManager</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

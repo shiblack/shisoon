@@ -1,11 +1,10 @@
 ﻿/*
  * XCoder v4.8.4531.242
  * 作者：sk/DESKTOP-I6PMUKT
- * 时间：2018-11-01 21:13:58
+ * 时间：2018-11-27 19:49:46
  * 版权：版权所有 (C) 新生命开发团队 2018
 */
-using EquipmentManager;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Xml.Serialization;
@@ -59,15 +58,16 @@ namespace NewLife.Cube.Entity
             set { if (OnPropertyChanging("SpotEquipmentNumber", value)) { _SpotEquipmentNumber = value; OnPropertyChanged("SpotEquipmentNumber"); } }
         }
 
-        private String _ConnMode;
+        private Int32 _ConnMode;
         /// <summary>通讯方式</summary>
         [DisplayName("通讯方式")]
         [Description("通讯方式")]
-        [DataObjectField(false, false, true, 50)]
-        [BindColumn(4, "ConnMode", "通讯方式", null, "nvarchar(50)", 0, 0, true)]
-        public ComMode ConnMode
+        [DataObjectField(false, false, true, 10)]
+        [BindColumn(4, "ConnMode", "通讯方式", null, "int", 10, 0, false)]
+        public virtual Int32 ConnMode
         {
-            get;set;
+            get { return _ConnMode; }
+            set { if (OnPropertyChanging("ConnMode", value)) { _ConnMode = value; OnPropertyChanged("ConnMode"); } }
         }
 
         private String _TelephoneNumber;
@@ -151,7 +151,7 @@ namespace NewLife.Cube.Entity
                     case "ID" : _ID = Convert.ToInt32(value); break;
                     case "Number1" : _Number1 = Convert.ToInt32(value); break;
                     case "SpotEquipmentNumber" : _SpotEquipmentNumber = Convert.ToString(value); break;
-                    case "ConnMode" : _ConnMode = Convert.ToString(value); break;
+                    case "ConnMode" : _ConnMode = Convert.ToInt32(value); break;
                     case "TelephoneNumber" : _TelephoneNumber = Convert.ToString(value); break;
                     case "CostPackage" : _CostPackage = Convert.ToString(value); break;
                     case "RenewalCycle" : _RenewalCycle = Convert.ToString(value); break;
@@ -209,7 +209,7 @@ namespace NewLife.Cube.Entity
         String SpotEquipmentNumber { get; set; }
 
         /// <summary>通讯方式</summary>
-        ComMode ConnMode { get; set; }
+        Int32 ConnMode { get; set; }
 
         /// <summary>电话号码</summary>
         String TelephoneNumber { get; set; }

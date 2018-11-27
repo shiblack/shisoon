@@ -1,14 +1,12 @@
 ﻿/*
  * XCoder v4.8.4531.242
  * 作者：sk/DESKTOP-I6PMUKT
- * 时间：2018-11-01 15:21:22
+ * 时间：2018-11-27 19:41:12
  * 版权：版权所有 (C) 新生命开发团队 2018
 */
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Configuration;
-using System.Data.SqlClient;
 using System.Text;
 using System.Xml.Serialization;
 using NewLife.Log;
@@ -88,30 +86,20 @@ namespace NewLife.Cube.Entity
         #region 高级查询
         // 以下为自定义高级查询的例子
 
-        /// <summary>
-        /// 查询满足条件的记录集，分页、排序
-        /// </summary>
-        /// <param name="key">关键字</param>
-        /// <param name="orderClause">排序，不带Order By</param>
-        /// <param name="startRowIndex">开始行，0表示第一行</param>
-        /// <param name="maximumRows">最大返回行数，0表示所有行</param>
-        /// <returns>实体集</returns>
-        [DataObjectMethod(DataObjectMethodType.Select, true)]
-        public static IList<FlowEquipment> Search(String key, String orderClause, Int32 startRowIndex, Int32 maximumRows)
-        {
-            return FindAll(SearchWhere(key), orderClause, null, startRowIndex, maximumRows);
-        }
-        /// <summary>
-        /// 查找现场设备的ID
-        /// </summary>
-        /// <param name="ID">本设备的查找字段</param>
-        /// <param name="value">本设备的值</param>
-        /// <returns></returns>
-        [DataObjectMethod(DataObjectMethodType.Select, true)]
-        public static int GetSpotmentID(string ID, object value)
-        {
-            return Convert.ToInt32(Find(ID, value));
-        }
+        ///// <summary>
+        ///// 查询满足条件的记录集，分页、排序
+        ///// </summary>
+        ///// <param name="key">关键字</param>
+        ///// <param name="orderClause">排序，不带Order By</param>
+        ///// <param name="startRowIndex">开始行，0表示第一行</param>
+        ///// <param name="maximumRows">最大返回行数，0表示所有行</param>
+        ///// <returns>实体集</returns>
+        //[DataObjectMethod(DataObjectMethodType.Select, true)]
+        //public static EntityList<FlowEquipment> Search(String key, String orderClause, Int32 startRowIndex, Int32 maximumRows)
+        //{
+        //    return FindAll(SearchWhere(key), orderClause, null, startRowIndex, maximumRows);
+        //}
+
         ///// <summary>
         ///// 查询满足条件的记录总数，分页和排序无效，带参数是因为ObjectDataSource要求它跟Search统一
         ///// </summary>
@@ -134,7 +122,7 @@ namespace NewLife.Cube.Entity
             var exp = new WhereExpression();
 
             // SearchWhereByKeys系列方法用于构建针对字符串字段的模糊搜索
-            //if (!String.IsNullOrEmpty(key)) SearchWhereByKeys(exp.Builder, key);
+           // if (!String.IsNullOrEmpty(key)) SearchWhereByKeys(exp.Builder, key);
 
             // 以下仅为演示，2、3行是同一个意思的不同写法，Field（继承自FieldItem）重载了==、!=、>、<、>=、<=等运算符（第4行）
             //exp &= _.Name == "testName"
@@ -144,16 +132,9 @@ namespace NewLife.Cube.Entity
 
             return exp;
         }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-     
         #endregion
 
         #region 扩展操作
-        
         #endregion
 
         #region 业务

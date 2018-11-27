@@ -1,11 +1,10 @@
 ﻿/*
  * XCoder v4.8.4531.242
  * 作者：sk/DESKTOP-I6PMUKT
- * 时间：2018-11-01 15:21:27
+ * 时间：2018-11-27 19:41:17
  * 版权：版权所有 (C) 新生命开发团队 2018
 */
-using EquipmentManager;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Xml.Serialization;
@@ -107,18 +106,18 @@ namespace NewLife.Cube.Entity
             set { if (OnPropertyChanging("Caliber", value)) { _Caliber = value; OnPropertyChanged("Caliber"); } }
         }
 
-        private NewType _Accuracy;
+        private Int32 _Accuracy;
         /// <summary>精度</summary>
         [DisplayName("精度")]
         [Description("精度")]
         [DataObjectField(false, false, true, 10)]
-        [BindColumn(8, "Accuracy", "精度", null, "NewType", 0, 0, true)]
-        public virtual NewType Accuracy
+        [BindColumn(8, "Accuracy", "精度", null, "int", 10, 0, false)]
+        public virtual Int32 Accuracy
         {
-
             get { return _Accuracy; }
             set { if (OnPropertyChanging("Accuracy", value)) { _Accuracy = value; OnPropertyChanged("Accuracy"); } }
         }
+
         private String _RangeRatio;
         /// <summary>量程比</summary>
         [DisplayName("量程比")]
@@ -131,17 +130,18 @@ namespace NewLife.Cube.Entity
             set { if (OnPropertyChanging("RangeRatio", value)) { _RangeRatio = value; OnPropertyChanged("RangeRatio"); } }
         }
 
-        private MerRange _MeasureRange;
+        private Int32 _MeasureRange;
         /// <summary>测量范围</summary>
         [DisplayName("测量范围")]
         [Description("测量范围")]
         [DataObjectField(false, false, true, 10)]
-        [BindColumn(10, "MeasureRange", "测量范围", null, "MerRange", 0, 0, true)]
-        public virtual MerRange MeasureRange
+        [BindColumn(10, "MeasureRange", "测量范围", null, "int", 10, 0, false)]
+        public virtual Int32 MeasureRange
         {
             get { return _MeasureRange; }
             set { if (OnPropertyChanging("MeasureRange", value)) { _MeasureRange = value; OnPropertyChanged("MeasureRange"); } }
         }
+
         private String _MaxIndication;
         /// <summary>最大示值</summary>
         [DisplayName("最大示值")]
@@ -180,7 +180,7 @@ namespace NewLife.Cube.Entity
 
         private String _VerificationPeriod;
         /// <summary>检定周期（年）</summary>
-        [DisplayName("检定周期（年）")]
+        [DisplayName("检定周期年")]
         [Description("检定周期（年）")]
         [DataObjectField(false, false, true, 10)]
         [BindColumn(14, "VerificationPeriod", "检定周期（年）", null, "nchar(10)", 0, 0, true)]
@@ -285,9 +285,9 @@ namespace NewLife.Cube.Entity
                     case "CustNumber" : _CustNumber = Convert.ToString(value); break;
                     case "Brand" : _Brand = Convert.ToString(value); break;
                     case "Caliber" : _Caliber = Convert.ToString(value); break;
-                    case "Accuracy" : _Accuracy = (NewType)value; break;
+                    case "Accuracy" : _Accuracy = Convert.ToInt32(value); break;
                     case "RangeRatio" : _RangeRatio = Convert.ToString(value); break;
-                    case "MeasureRange" : _MeasureRange = (MerRange)value; break;
+                    case "MeasureRange" : _MeasureRange = Convert.ToInt32(value); break;
                     case "MaxIndication" : _MaxIndication = Convert.ToString(value); break;
                     case "ConnInterface" : _ConnInterface = Convert.ToString(value); break;
                     case "ConversionCoefficient" : _ConversionCoefficient = Convert.ToString(value); break;
@@ -306,58 +306,58 @@ namespace NewLife.Cube.Entity
         /// <summary>取得字段信息的快捷方式</summary>
         public class _
         {
-            ///<summary></summary>
+            ///<summary>编号</summary>
             public static readonly Field ID = FindByName("ID");
 
-            ///<summary></summary>
+            ///<summary>设备编号</summary>
             public static readonly Field Number1 = FindByName("Number1");
 
-            ///<summary></summary>
+            ///<summary>现场设备编号</summary>
             public static readonly Field SpotEquipmentNumber = FindByName("SpotEquipmentNumber");
 
-            ///<summary></summary>
+            ///<summary>水表编号</summary>
             public static readonly Field WMaterNumber = FindByName("WMaterNumber");
 
-            ///<summary></summary>
+            ///<summary>客户编号</summary>
             public static readonly Field CustNumber = FindByName("CustNumber");
 
-            ///<summary></summary>
+            ///<summary>品牌</summary>
             public static readonly Field Brand = FindByName("Brand");
 
-            ///<summary></summary>
+            ///<summary>口径</summary>
             public static readonly Field Caliber = FindByName("Caliber");
 
-            ///<summary></summary>
+            ///<summary>精度</summary>
             public static readonly Field Accuracy = FindByName("Accuracy");
 
-            ///<summary></summary>
+            ///<summary>量程比</summary>
             public static readonly Field RangeRatio = FindByName("RangeRatio");
 
-            ///<summary></summary>
+            ///<summary>测量范围</summary>
             public static readonly Field MeasureRange = FindByName("MeasureRange");
 
-            ///<summary></summary>
+            ///<summary>最大示值</summary>
             public static readonly Field MaxIndication = FindByName("MaxIndication");
 
-            ///<summary></summary>
+            ///<summary>通讯接口</summary>
             public static readonly Field ConnInterface = FindByName("ConnInterface");
 
-            ///<summary></summary>
+            ///<summary>转换系数</summary>
             public static readonly Field ConversionCoefficient = FindByName("ConversionCoefficient");
 
-            ///<summary></summary>
+            ///<summary>检定周期（年）</summary>
             public static readonly Field VerificationPeriod = FindByName("VerificationPeriod");
 
-            ///<summary></summary>
+            ///<summary>检定周期</summary>
             public static readonly Field VerificationDay = FindByName("VerificationDay");
 
-            ///<summary></summary>
+            ///<summary>有效期限</summary>
             public static readonly Field ExpirationDateF = FindByName("ExpirationDateF");
 
-            ///<summary></summary>
+            ///<summary>鉴定证书编号</summary>
             public static readonly Field VerificationCertificateNumber = FindByName("VerificationCertificateNumber");
 
-            ///<summary></summary>
+            ///<summary>检定结论</summary>
             public static readonly Field VerificationConclusion = FindByName("VerificationConclusion");
 
             static Field FindByName(String name) { return Meta.Table.FindByName(name); }
@@ -369,58 +369,58 @@ namespace NewLife.Cube.Entity
     public partial interface IFlowEquipment
     {
         #region 属性
-        /// <summary></summary>
+        /// <summary>编号</summary>
         Int32 ID { get; set; }
 
-        /// <summary></summary>
+        /// <summary>设备编号</summary>
         Int32 Number1 { get; set; }
 
-        /// <summary></summary>
+        /// <summary>现场设备编号</summary>
         String SpotEquipmentNumber { get; set; }
 
-        /// <summary></summary>
+        /// <summary>水表编号</summary>
         String WMaterNumber { get; set; }
 
-        /// <summary></summary>
+        /// <summary>客户编号</summary>
         String CustNumber { get; set; }
 
-        /// <summary></summary>
+        /// <summary>品牌</summary>
         String Brand { get; set; }
 
-        /// <summary></summary>
+        /// <summary>口径</summary>
         String Caliber { get; set; }
 
-        /// <summary></summary>
-        NewType Accuracy { get; set; }
+        /// <summary>精度</summary>
+        Int32 Accuracy { get; set; }
 
-        /// <summary></summary>
+        /// <summary>量程比</summary>
         String RangeRatio { get; set; }
 
-        /// <summary></summary>
-        MerRange MeasureRange { get; set; }
+        /// <summary>测量范围</summary>
+        Int32 MeasureRange { get; set; }
 
-        /// <summary></summary>
+        /// <summary>最大示值</summary>
         String MaxIndication { get; set; }
 
-        /// <summary></summary>
+        /// <summary>通讯接口</summary>
         String ConnInterface { get; set; }
 
-        /// <summary></summary>
+        /// <summary>转换系数</summary>
         String ConversionCoefficient { get; set; }
 
-        /// <summary></summary>
+        /// <summary>检定周期（年）</summary>
         String VerificationPeriod { get; set; }
 
-        /// <summary></summary>
+        /// <summary>检定周期</summary>
         DateTime VerificationDay { get; set; }
 
-        /// <summary></summary>
+        /// <summary>有效期限</summary>
         DateTime ExpirationDateF { get; set; }
 
-        /// <summary></summary>
+        /// <summary>鉴定证书编号</summary>
         String VerificationCertificateNumber { get; set; }
 
-        /// <summary></summary>
+        /// <summary>检定结论</summary>
         String VerificationConclusion { get; set; }
         #endregion
 

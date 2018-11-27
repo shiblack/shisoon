@@ -1,11 +1,10 @@
 ﻿/*
  * XCoder v4.8.4531.242
  * 作者：sk/DESKTOP-I6PMUKT
- * 时间：2018-11-01 20:54:46
+ * 时间：2018-11-27 19:51:40
  * 版权：版权所有 (C) 新生命开发团队 2018
 */
-using EquipmentManager;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Xml.Serialization;
@@ -72,13 +71,17 @@ namespace NewLife.Cube.Entity
             set { if (OnPropertyChanging("MaterialScience", value)) { _MaterialScience = value; OnPropertyChanged("MaterialScience"); } }
         }
 
-        private String _Type;
+        private Int32 _Type;
         /// <summary>类型</summary>
         [DisplayName("类型")]
         [Description("类型")]
         [DataObjectField(false, false, true, 10)]
-        [BindColumn(5, "Type", "类型", null, "nchar(10)", 0, 0, true)]
-        public VType Type { get; set; }
+        [BindColumn(5, "Type", "类型", null, "int", 10, 0, false)]
+        public virtual Int32 Type
+        {
+            get { return _Type; }
+            set { if (OnPropertyChanging("Type", value)) { _Type = value; OnPropertyChanged("Type"); } }
+        }
 
         private String _Caliber;
         /// <summary>口径</summary>
@@ -137,7 +140,7 @@ namespace NewLife.Cube.Entity
                     case "Number1" : _Number1 = Convert.ToInt32(value); break;
                     case "SpotEquipmentNumber1" : _SpotEquipmentNumber1 = Convert.ToString(value); break;
                     case "MaterialScience" : _MaterialScience = Convert.ToString(value); break;
-                    case "Type" : _Type = Convert.ToString(value); break;
+                    case "Type" : _Type = Convert.ToInt32(value); break;
                     case "Caliber" : _Caliber = Convert.ToString(value); break;
                     case "Purpose1" : _Purpose1 = Convert.ToString(value); break;
                     default: base[name] = value; break;
@@ -193,7 +196,7 @@ namespace NewLife.Cube.Entity
         String MaterialScience { get; set; }
 
         /// <summary>类型</summary>
-        VType Type { get; set; }
+        Int32 Type { get; set; }
 
         /// <summary>口径</summary>
         String Caliber { get; set; }
