@@ -4,7 +4,8 @@
  * 时间：2018-11-03 00:04:23
  * 版权：版权所有 (C) 新生命开发团队 2018
 */
-﻿using System;
+using EquipmentManager;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Xml.Serialization;
@@ -101,10 +102,9 @@ namespace NewLife.Cube.Entity
         [Description("设备类型")]
         [DataObjectField(false, false, true, 10)]
         [BindColumn(7, "EquipmentType", "设备类型", null, "nchar(10)", 0, 0, true)]
-        public virtual String EquipmentType
+        public EType EquipmentType
         {
-            get { return _EquipmentType; }
-            set { if (OnPropertyChanging("EquipmentType", value)) { _EquipmentType = value; OnPropertyChanged("EquipmentType"); } }
+            get;set;
         }
 
         private String _Manufacturer;
@@ -137,10 +137,9 @@ namespace NewLife.Cube.Entity
         [Description("用途")]
         [DataObjectField(false, false, true, 10)]
         [BindColumn(10, "Purpose", "用途", null, "nchar(10)", 0, 0, true)]
-        public virtual String Purpose
+        public  NewPurpose Purpose
         {
-            get { return _Purpose; }
-            set { if (OnPropertyChanging("Purpose", value)) { _Purpose = value; OnPropertyChanged("Purpose"); } }
+           get;set;
         }
 
         private DateTime _InstallationTime;
@@ -233,10 +232,9 @@ namespace NewLife.Cube.Entity
         [Description("设备状态")]
         [DataObjectField(false, false, true, 10)]
         [BindColumn(18, "EquipmentState", "设备状态", null, "nchar(10)", 0, 0, true)]
-        public virtual String EquipmentState
+        public EState EquipmentState
         {
-            get { return _EquipmentState; }
-            set { if (OnPropertyChanging("EquipmentState", value)) { _EquipmentState = value; OnPropertyChanged("EquipmentState"); } }
+            get;set;
         }
 
         private String _PowerSupplyMode;
@@ -245,10 +243,9 @@ namespace NewLife.Cube.Entity
         [Description("供电方式")]
         [DataObjectField(false, false, true, 10)]
         [BindColumn(19, "PowerSupplyMode", "供电方式", null, "nchar(10)", 0, 0, true)]
-        public virtual String PowerSupplyMode
+        public PowerMode PowerSupplyMode
         {
-            get { return _PowerSupplyMode; }
-            set { if (OnPropertyChanging("PowerSupplyMode", value)) { _PowerSupplyMode = value; OnPropertyChanged("PowerSupplyMode"); } }
+            get;set;
         }
 
         private DateTime _DiscardedTime;
@@ -457,7 +454,7 @@ namespace NewLife.Cube.Entity
         String SpecificationModel { get; set; }
 
         /// <summary>设备类型</summary>
-        String EquipmentType { get; set; }
+        EType EquipmentType { get; set; }
 
         /// <summary>生产厂家</summary>
         String Manufacturer { get; set; }
@@ -466,7 +463,7 @@ namespace NewLife.Cube.Entity
         String DeviceSerialNumber { get; set; }
 
         /// <summary>用途</summary>
-        String Purpose { get; set; }
+        NewPurpose Purpose { get; set; }
 
         /// <summary>安装时间</summary>
         DateTime InstallationTime { get; set; }
@@ -490,10 +487,10 @@ namespace NewLife.Cube.Entity
         String LiveImage { get; set; }
 
         /// <summary>设备状态</summary>
-        String EquipmentState { get; set; }
+        EState EquipmentState { get; set; }
 
         /// <summary>供电方式</summary>
-        String PowerSupplyMode { get; set; }
+        PowerMode PowerSupplyMode { get; set; }
 
         /// <summary>报废时间</summary>
         DateTime DiscardedTime { get; set; }
