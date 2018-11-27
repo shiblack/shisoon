@@ -4,7 +4,8 @@
  * 时间：2018-11-27 19:51:23
  * 版权：版权所有 (C) 新生命开发团队 2018
 */
-﻿using System;
+using EquipmentManager;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Xml.Serialization;
@@ -95,13 +96,13 @@ namespace NewLife.Cube.Entity
             set { if (OnPropertyChanging("SpecificationModel", value)) { _SpecificationModel = value; OnPropertyChanged("SpecificationModel"); } }
         }
 
-        private Int32 _EquipmentType;
+        private EType _EquipmentType;
         /// <summary>设备类型</summary>
         [DisplayName("设备类型")]
         [Description("设备类型")]
         [DataObjectField(false, false, true, 10)]
         [BindColumn(7, "EquipmentType", "设备类型", null, "int", 10, 0, false)]
-        public virtual Int32 EquipmentType
+        public virtual EType EquipmentType
         {
             get { return _EquipmentType; }
             set { if (OnPropertyChanging("EquipmentType", value)) { _EquipmentType = value; OnPropertyChanged("EquipmentType"); } }
@@ -131,13 +132,13 @@ namespace NewLife.Cube.Entity
             set { if (OnPropertyChanging("DeviceSerialNumber", value)) { _DeviceSerialNumber = value; OnPropertyChanged("DeviceSerialNumber"); } }
         }
 
-        private Int32 _Purpose;
+        private NewPurpose _Purpose;
         /// <summary>用途</summary>
         [DisplayName("用途")]
         [Description("用途")]
         [DataObjectField(false, false, true, 10)]
         [BindColumn(10, "Purpose", "用途", null, "int", 10, 0, false)]
-        public virtual Int32 Purpose
+        public virtual NewPurpose Purpose
         {
             get { return _Purpose; }
             set { if (OnPropertyChanging("Purpose", value)) { _Purpose = value; OnPropertyChanged("Purpose"); } }
@@ -227,25 +228,25 @@ namespace NewLife.Cube.Entity
             set { if (OnPropertyChanging("LiveImage", value)) { _LiveImage = value; OnPropertyChanged("LiveImage"); } }
         }
 
-        private Int32 _EquipmentState;
+        private EState _EquipmentState;
         /// <summary>设备状态</summary>
         [DisplayName("设备状态")]
         [Description("设备状态")]
         [DataObjectField(false, false, true, 10)]
         [BindColumn(18, "EquipmentState", "设备状态", null, "int", 10, 0, false)]
-        public virtual Int32 EquipmentState
+        public virtual EState EquipmentState
         {
             get { return _EquipmentState; }
             set { if (OnPropertyChanging("EquipmentState", value)) { _EquipmentState = value; OnPropertyChanged("EquipmentState"); } }
         }
 
-        private Int32 _PowerSupplyMode;
+        private PowerMode _PowerSupplyMode;
         /// <summary>供电方式</summary>
         [DisplayName("供电方式")]
         [Description("供电方式")]
         [DataObjectField(false, false, true, 10)]
         [BindColumn(19, "PowerSupplyMode", "供电方式", null, "int", 10, 0, false)]
-        public virtual Int32 PowerSupplyMode
+        public virtual PowerMode PowerSupplyMode
         {
             get { return _PowerSupplyMode; }
             set { if (OnPropertyChanging("PowerSupplyMode", value)) { _PowerSupplyMode = value; OnPropertyChanged("PowerSupplyMode"); } }
@@ -337,10 +338,10 @@ namespace NewLife.Cube.Entity
                     case "AssetNumber" : _AssetNumber = Convert.ToString(value); break;
                     case "Name" : _Name = Convert.ToString(value); break;
                     case "SpecificationModel" : _SpecificationModel = Convert.ToString(value); break;
-                    case "EquipmentType" : _EquipmentType = Convert.ToInt32(value); break;
+                    case "EquipmentType" : _EquipmentType = (EType)value; break;
                     case "Manufacturer" : _Manufacturer = Convert.ToString(value); break;
                     case "DeviceSerialNumber" : _DeviceSerialNumber = Convert.ToString(value); break;
-                    case "Purpose" : _Purpose = Convert.ToInt32(value); break;
+                    case "Purpose" : _Purpose = (NewPurpose)value; break;
                     case "InstallationTime" : _InstallationTime = Convert.ToDateTime(value); break;
                     case "IntstallationPerson" : _IntstallationPerson = Convert.ToString(value); break;
                     case "DetailedInstallPlace" : _DetailedInstallPlace = Convert.ToString(value); break;
@@ -348,8 +349,8 @@ namespace NewLife.Cube.Entity
                     case "LiveTips" : _LiveTips = Convert.ToString(value); break;
                     case "GPSPosition" : _GPSPosition = Convert.ToString(value); break;
                     case "LiveImage" : _LiveImage = Convert.ToString(value); break;
-                    case "EquipmentState" : _EquipmentState = Convert.ToInt32(value); break;
-                    case "PowerSupplyMode" : _PowerSupplyMode = Convert.ToInt32(value); break;
+                    case "EquipmentState" : _EquipmentState = (EState)value; break;
+                    case "PowerSupplyMode" : _PowerSupplyMode = (PowerMode)value; break;
                     case "DiscardedTime" : _DiscardedTime = Convert.ToDateTime(value); break;
                     case "DiscardedReason" : _DiscardedReason = Convert.ToString(value); break;
                     case "Remarks" : _Remarks = Convert.ToString(value); break;
@@ -457,7 +458,7 @@ namespace NewLife.Cube.Entity
         String SpecificationModel { get; set; }
 
         /// <summary>设备类型</summary>
-        Int32 EquipmentType { get; set; }
+        EType EquipmentType { get; set; }
 
         /// <summary>生产厂家</summary>
         String Manufacturer { get; set; }
@@ -466,7 +467,7 @@ namespace NewLife.Cube.Entity
         String DeviceSerialNumber { get; set; }
 
         /// <summary>用途</summary>
-        Int32 Purpose { get; set; }
+        NewPurpose Purpose { get; set; }
 
         /// <summary>安装时间</summary>
         DateTime InstallationTime { get; set; }
@@ -490,10 +491,10 @@ namespace NewLife.Cube.Entity
         String LiveImage { get; set; }
 
         /// <summary>设备状态</summary>
-        Int32 EquipmentState { get; set; }
+        EState EquipmentState { get; set; }
 
         /// <summary>供电方式</summary>
-        Int32 PowerSupplyMode { get; set; }
+        PowerMode PowerSupplyMode { get; set; }
 
         /// <summary>报废时间</summary>
         DateTime DiscardedTime { get; set; }

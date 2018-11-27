@@ -4,7 +4,8 @@
  * 时间：2018-11-27 19:51:40
  * 版权：版权所有 (C) 新生命开发团队 2018
 */
-﻿using System;
+using EquipmentManager;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Xml.Serialization;
@@ -71,13 +72,13 @@ namespace NewLife.Cube.Entity
             set { if (OnPropertyChanging("MaterialScience", value)) { _MaterialScience = value; OnPropertyChanged("MaterialScience"); } }
         }
 
-        private Int32 _Type;
+        private VType _Type;
         /// <summary>类型</summary>
         [DisplayName("类型")]
         [Description("类型")]
         [DataObjectField(false, false, true, 10)]
         [BindColumn(5, "Type", "类型", null, "int", 10, 0, false)]
-        public virtual Int32 Type
+        public virtual VType Type
         {
             get { return _Type; }
             set { if (OnPropertyChanging("Type", value)) { _Type = value; OnPropertyChanged("Type"); } }
@@ -140,7 +141,7 @@ namespace NewLife.Cube.Entity
                     case "Number1" : _Number1 = Convert.ToInt32(value); break;
                     case "SpotEquipmentNumber1" : _SpotEquipmentNumber1 = Convert.ToString(value); break;
                     case "MaterialScience" : _MaterialScience = Convert.ToString(value); break;
-                    case "Type" : _Type = Convert.ToInt32(value); break;
+                    case "Type" : _Type = (VType) value; break;
                     case "Caliber" : _Caliber = Convert.ToString(value); break;
                     case "Purpose1" : _Purpose1 = Convert.ToString(value); break;
                     default: base[name] = value; break;
@@ -196,7 +197,7 @@ namespace NewLife.Cube.Entity
         String MaterialScience { get; set; }
 
         /// <summary>类型</summary>
-        Int32 Type { get; set; }
+        VType Type { get; set; }
 
         /// <summary>口径</summary>
         String Caliber { get; set; }

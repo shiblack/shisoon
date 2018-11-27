@@ -4,7 +4,8 @@
  * 时间：2018-11-27 19:41:17
  * 版权：版权所有 (C) 新生命开发团队 2018
 */
-﻿using System;
+using EquipmentManager;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Xml.Serialization;
@@ -106,13 +107,13 @@ namespace NewLife.Cube.Entity
             set { if (OnPropertyChanging("Caliber", value)) { _Caliber = value; OnPropertyChanged("Caliber"); } }
         }
 
-        private Int32 _Accuracy;
+        private NewType _Accuracy;
         /// <summary>精度</summary>
         [DisplayName("精度")]
         [Description("精度")]
         [DataObjectField(false, false, true, 10)]
         [BindColumn(8, "Accuracy", "精度", null, "int", 10, 0, false)]
-        public virtual Int32 Accuracy
+        public virtual NewType Accuracy
         {
             get { return _Accuracy; }
             set { if (OnPropertyChanging("Accuracy", value)) { _Accuracy = value; OnPropertyChanged("Accuracy"); } }
@@ -130,13 +131,13 @@ namespace NewLife.Cube.Entity
             set { if (OnPropertyChanging("RangeRatio", value)) { _RangeRatio = value; OnPropertyChanged("RangeRatio"); } }
         }
 
-        private Int32 _MeasureRange;
+        private MerRange _MeasureRange;
         /// <summary>测量范围</summary>
         [DisplayName("测量范围")]
         [Description("测量范围")]
         [DataObjectField(false, false, true, 10)]
         [BindColumn(10, "MeasureRange", "测量范围", null, "int", 10, 0, false)]
-        public virtual Int32 MeasureRange
+        public virtual MerRange MeasureRange
         {
             get { return _MeasureRange; }
             set { if (OnPropertyChanging("MeasureRange", value)) { _MeasureRange = value; OnPropertyChanged("MeasureRange"); } }
@@ -285,9 +286,9 @@ namespace NewLife.Cube.Entity
                     case "CustNumber" : _CustNumber = Convert.ToString(value); break;
                     case "Brand" : _Brand = Convert.ToString(value); break;
                     case "Caliber" : _Caliber = Convert.ToString(value); break;
-                    case "Accuracy" : _Accuracy = Convert.ToInt32(value); break;
+                    case "Accuracy" : _Accuracy = (NewType)value; break;
                     case "RangeRatio" : _RangeRatio = Convert.ToString(value); break;
-                    case "MeasureRange" : _MeasureRange = Convert.ToInt32(value); break;
+                    case "MeasureRange" : _MeasureRange = (MerRange)value; break;
                     case "MaxIndication" : _MaxIndication = Convert.ToString(value); break;
                     case "ConnInterface" : _ConnInterface = Convert.ToString(value); break;
                     case "ConversionCoefficient" : _ConversionCoefficient = Convert.ToString(value); break;
@@ -391,13 +392,13 @@ namespace NewLife.Cube.Entity
         String Caliber { get; set; }
 
         /// <summary>精度</summary>
-        Int32 Accuracy { get; set; }
+        NewType Accuracy { get; set; }
 
         /// <summary>量程比</summary>
         String RangeRatio { get; set; }
 
         /// <summary>测量范围</summary>
-        Int32 MeasureRange { get; set; }
+        MerRange MeasureRange { get; set; }
 
         /// <summary>最大示值</summary>
         String MaxIndication { get; set; }
