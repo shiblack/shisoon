@@ -107,13 +107,18 @@ namespace NewLife.Cube.Entity
             set { if (OnPropertyChanging("Caliber", value)) { _Caliber = value; OnPropertyChanged("Caliber"); } }
         }
 
-        private String _Accuracy;
+        private NewType _Accuracy;
         /// <summary>精度</summary>
         [DisplayName("精度")]
         [Description("精度")]
         [DataObjectField(false, false, true, 10)]
-        [BindColumn(8, "Accuracy", "精度", null, "nchar(10)", 0, 0, true)]
-        public NewType Accuracy { get; set; }
+        [BindColumn(8, "Accuracy", "精度", null, "NewType", 0, 0, true)]
+        public virtual NewType Accuracy
+        {
+
+            get { return _Accuracy; }
+            set { if (OnPropertyChanging("Accuracy", value)) { _Accuracy = value; OnPropertyChanged("Accuracy"); } }
+        }
         private String _RangeRatio;
         /// <summary>量程比</summary>
         [DisplayName("量程比")]
@@ -126,13 +131,17 @@ namespace NewLife.Cube.Entity
             set { if (OnPropertyChanging("RangeRatio", value)) { _RangeRatio = value; OnPropertyChanged("RangeRatio"); } }
         }
 
-        private String _MeasureRange;
+        private MerRange _MeasureRange;
         /// <summary>测量范围</summary>
         [DisplayName("测量范围")]
         [Description("测量范围")]
         [DataObjectField(false, false, true, 10)]
-        [BindColumn(10, "MeasureRange", "测量范围", null, "nchar(10)", 0, 0, true)]
-        public MerRange MeasureRange { get; set; }
+        [BindColumn(10, "MeasureRange", "测量范围", null, "MerRange", 0, 0, true)]
+        public virtual MerRange MeasureRange
+        {
+            get { return _MeasureRange; }
+            set { if (OnPropertyChanging("MeasureRange", value)) { _MeasureRange = value; OnPropertyChanged("MeasureRange"); } }
+        }
         private String _MaxIndication;
         /// <summary>最大示值</summary>
         [DisplayName("最大示值")]
@@ -276,9 +285,9 @@ namespace NewLife.Cube.Entity
                     case "CustNumber" : _CustNumber = Convert.ToString(value); break;
                     case "Brand" : _Brand = Convert.ToString(value); break;
                     case "Caliber" : _Caliber = Convert.ToString(value); break;
-                    case "Accuracy" : _Accuracy = Convert.ToString(value); break;
+                    case "Accuracy" : _Accuracy = (NewType)value; break;
                     case "RangeRatio" : _RangeRatio = Convert.ToString(value); break;
-                    case "MeasureRange" : _MeasureRange = Convert.ToString(value); break;
+                    case "MeasureRange" : _MeasureRange = (MerRange)value; break;
                     case "MaxIndication" : _MaxIndication = Convert.ToString(value); break;
                     case "ConnInterface" : _ConnInterface = Convert.ToString(value); break;
                     case "ConversionCoefficient" : _ConversionCoefficient = Convert.ToString(value); break;
