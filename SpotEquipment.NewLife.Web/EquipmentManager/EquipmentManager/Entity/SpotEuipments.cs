@@ -243,11 +243,7 @@ namespace NewLife.Cube.Entity
         [Description("供电方式")]
         [DataObjectField(false, false, true, 10)]
         [BindColumn(19, "PowerSupplyMode", "供电方式", null, "nchar(10)", 0, 0, true)]
-        public PowerMode PowerSupplyMode
-        {
-            get;set;
-        }
-
+        public PowerMode PowerSupplyMode { get; set; }
         private DateTime _DiscardedTime;
         /// <summary>报废时间</summary>
         [DisplayName("报废时间")]

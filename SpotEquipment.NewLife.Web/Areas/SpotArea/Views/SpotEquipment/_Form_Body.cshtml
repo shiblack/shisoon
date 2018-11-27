@@ -1,0 +1,146 @@
+﻿@model NewLife.Cube.Entity.SpotEuipments
+@using NewLife;
+@using XCode;
+@using XCode.Configuration;
+@{
+    var entity = Model;
+    var fields = ViewBag.Fields as IList<FieldItem>;
+    var isNew = (entity as IEntity).IsNullKey;
+}
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">设备编号</label>
+    <div class="input-group col-xs-9 col-sm-9">
+        @Html.TextBox("Number", @entity.Number, new { @class = "form-control", role="number" })
+    </div>
+</div>
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">所属企业</label>
+    <div class="input-group col-xs-9 col-sm-9">
+        <input class="form-control" id="OwnedEnterprise" name="OwnedEnterprise" type="text" value="@entity.OwnedEnterprise" />
+    </div>
+</div>
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">资产编码</label>
+    <div class="input-group col-xs-9 col-sm-9">
+        <input class="form-control" id="AssetNumber" name="AssetNumber" type="text" value="@entity.AssetNumber" />
+    </div>
+</div>
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">名称</label>
+    <div class="input-group col-xs-9 col-sm-9">
+        <input class="form-control" id="Name" name="Name" type="text" value="@entity.Name" />
+    </div>
+</div>
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">规格型号</label>
+    <div class="input-group col-xs-9 col-sm-9">
+        <input class="form-control" id="SpecificationModel" name="SpecificationModel" type="text" value="@entity.SpecificationModel" />
+    </div>
+</div>
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">设备类型</label>
+    <div class="input-group col-xs-9 col-sm-9">
+        @Html.ForEnum("EquipmentType", @entity.EquipmentType)
+    </div>
+</div>
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">生产厂家</label>
+    <div class="input-group col-xs-9 col-sm-9">
+        <input class="form-control" id="Manufacturer" name="Manufacturer" type="text" value="@entity.Manufacturer" />
+    </div>
+</div>
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">设备序列号</label>
+    <div class="input-group col-xs-9 col-sm-9">
+        <input class="form-control" id="DeviceSerialNumber" name="DeviceSerialNumber" type="text" value="@entity.DeviceSerialNumber" />
+    </div>
+</div>
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">用途</label>
+    <div class="input-group col-xs-9 col-sm-9">
+        @Html.ForEnum("Purpose", @entity.Purpose)
+    </div>
+</div>
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">安装时间</label>
+    <div class="input-group col-xs-9 col-sm-9">
+        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+        @Html.TextBox("InstallationTime", @entity.InstallationTime.ToFullString(""), new { @class = "form-control date form_datetime" })
+    </div>
+</div>
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">安装人员</label>
+    <div class="input-group col-xs-9 col-sm-9">
+        <input class="form-control" id="IntstallationPerson" name="IntstallationPerson" type="text" value="@entity.IntstallationPerson" />
+    </div>
+</div>
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">详细安装地址</label>
+    <div class="input-group col-xs-9 col-sm-9">
+        <input class="form-control" id="DetailedInstallPlace" name="DetailedInstallPlace" type="text" value="@entity.DetailedInstallPlace" />
+    </div>
+</div>
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">位置</label>
+    <div class="input-group col-xs-9 col-sm-9">
+        <input class="form-control" id="Position" name="Position" type="text" value="@entity.Position" />
+    </div>
+</div>
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">现场提示</label>
+    <div class="input-group col-xs-9 col-sm-9">
+        <textarea class="form-control" cols="20" id="LiveTips" name="LiveTips" rows="3">@entity.LiveTips</textarea>
+    </div>
+</div>
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">GPS位置</label>
+    <div class="input-group col-xs-9 col-sm-9">
+        <input class="form-control" id="GPSPosition" name="GPSPosition" type="text" value="@entity.GPSPosition" />
+    </div>
+</div>
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">现场图片</label>
+    <div class="input-group col-xs-9 col-sm-9">
+        <input class="form-control" id="LiveImage" name="LiveImage" type="text" value="@entity.LiveImage" />
+    </div>
+</div>
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">设备状态</label>
+    <div class="input-group col-xs-9 col-sm-9">
+        @Html.ForEnum("EquipmentState", @entity.EquipmentState)
+    </div>
+</div>
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">供电方式</label>
+    <div class="input-group col-xs-9 col-sm-9">
+        @Html.ForEnum("PowerSupplyMode", @entity.PowerSupplyMode)
+    </div>
+</div>
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">报废时间</label>
+    <div class="input-group col-xs-9 col-sm-9">
+        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+        @Html.TextBox("DiscardedTime", @entity.DiscardedTime.ToFullString(""), new { @class = "form-control date form_datetime" })
+    </div>
+</div>
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">报废原因</label>
+    <div class="input-group col-xs-9 col-sm-9">
+        <input class="form-control" id="DiscardedReason" name="DiscardedReason" type="text" value="@entity.DiscardedReason" />
+    </div>
+</div>
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">备注</label>
+    <div class="input-group col-xs-9 col-sm-9">
+        <textarea class="form-control" cols="20" id="Remarks" name="Remarks" rows="3">@entity.Remarks</textarea>
+    </div>
+</div>
+@Html.Partial("_Form_Footer", entity)
+@if (this.Has(PermissionFlags.Insert, PermissionFlags.Update))
+{
+    <div class="clearfix form-actions col-sm-12 col-md-12">
+        <label class="control-label col-xs-4 col-sm-5 col-md-5"></label>
+        <button type="submit" class="btn btn-success btn-sm"><i class="glyphicon glyphicon-@(isNew ? "plus" : "save")"></i><strong>@(isNew ? "新增" : "保存")</strong></button>
+        <button type="button" class="btn btn-danger btn-sm" onclick="history.go(-1);"><i class="glyphicon glyphicon-remove"></i><strong>取消</strong></button>
+    </div>
+}
