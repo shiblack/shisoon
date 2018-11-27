@@ -132,12 +132,7 @@ namespace NewLife.Cube.Entity
         [Description("测量范围")]
         [DataObjectField(false, false, true, 10)]
         [BindColumn(10, "MeasureRange", "测量范围", null, "nchar(10)", 0, 0, true)]
-        public virtual String MeasureRange
-        {
-            get { return _MeasureRange; }
-            set { if (OnPropertyChanging("MeasureRange", value)) { _MeasureRange = value; OnPropertyChanged("MeasureRange"); } }
-        }
-
+        public MerRange MeasureRange { get; set; }
         private String _MaxIndication;
         /// <summary>最大示值</summary>
         [DisplayName("最大示值")]
@@ -393,7 +388,7 @@ namespace NewLife.Cube.Entity
         String RangeRatio { get; set; }
 
         /// <summary></summary>
-        String MeasureRange { get; set; }
+        MerRange MeasureRange { get; set; }
 
         /// <summary></summary>
         String MaxIndication { get; set; }

@@ -4,7 +4,8 @@
  * 时间：2018-11-01 20:54:46
  * 版权：版权所有 (C) 新生命开发团队 2018
 */
-﻿using System;
+using EquipmentManager;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Xml.Serialization;
@@ -77,11 +78,7 @@ namespace NewLife.Cube.Entity
         [Description("类型")]
         [DataObjectField(false, false, true, 10)]
         [BindColumn(5, "Type", "类型", null, "nchar(10)", 0, 0, true)]
-        public virtual String Type
-        {
-            get { return _Type; }
-            set { if (OnPropertyChanging("Type", value)) { _Type = value; OnPropertyChanged("Type"); } }
-        }
+        public VType Type { get; set; }
 
         private String _Caliber;
         /// <summary>口径</summary>
@@ -196,7 +193,7 @@ namespace NewLife.Cube.Entity
         String MaterialScience { get; set; }
 
         /// <summary>类型</summary>
-        String Type { get; set; }
+        VType Type { get; set; }
 
         /// <summary>口径</summary>
         String Caliber { get; set; }

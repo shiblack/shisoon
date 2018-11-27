@@ -4,7 +4,8 @@
  * 时间：2018-11-01 21:13:58
  * 版权：版权所有 (C) 新生命开发团队 2018
 */
-﻿using System;
+using EquipmentManager;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Xml.Serialization;
@@ -64,10 +65,9 @@ namespace NewLife.Cube.Entity
         [Description("通讯方式")]
         [DataObjectField(false, false, true, 50)]
         [BindColumn(4, "ConnMode", "通讯方式", null, "nvarchar(50)", 0, 0, true)]
-        public virtual String ConnMode
+        public ComMode ConnMode
         {
-            get { return _ConnMode; }
-            set { if (OnPropertyChanging("ConnMode", value)) { _ConnMode = value; OnPropertyChanged("ConnMode"); } }
+            get;set;
         }
 
         private String _TelephoneNumber;
@@ -209,7 +209,7 @@ namespace NewLife.Cube.Entity
         String SpotEquipmentNumber { get; set; }
 
         /// <summary>通讯方式</summary>
-        String ConnMode { get; set; }
+        ComMode ConnMode { get; set; }
 
         /// <summary>电话号码</summary>
         String TelephoneNumber { get; set; }

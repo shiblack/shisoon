@@ -101,7 +101,7 @@ namespace EquipmentManager
         Q4
 
     }
-    public enum ValueType
+    public enum VType
     {
         //阀门类型
         闸阀,
