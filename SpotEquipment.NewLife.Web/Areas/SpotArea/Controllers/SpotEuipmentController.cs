@@ -11,6 +11,11 @@ namespace SpotEquipment.NewLife.Web.Areas.SpotArea.Controllers
 {
     public class SpotEuipmentController : EntityController<SpotEuipments>
     {
-        
+        public override ActionResult Delete(Int32 id)
+        {
+            //return base.Delete(id);
+            throw new Exception("不允许删除");
+        }
+
     }
 }
