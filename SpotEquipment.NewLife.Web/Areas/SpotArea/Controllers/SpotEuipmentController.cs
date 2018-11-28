@@ -14,7 +14,7 @@ namespace SpotEquipment.NewLife.Web.Areas.SpotArea.Controllers
         public override ActionResult Delete(Int32 id)
         {
             //return base.Delete(id);
-            throw new Exception("不允许删除");
+            throw new Exception("不允许直接删除现场设备");
         }
 
     }

@@ -78,11 +78,12 @@ namespace NewLife.Cube.Entity
         #endregion
 
         #region 扩展属性﻿
-        
+
 
         #endregion
 
         #region 扩展查询﻿
+       
         #endregion
 
         #region 高级查询
@@ -110,10 +111,10 @@ namespace NewLife.Cube.Entity
         ///// <param name="startRowIndex">开始行，0表示第一行</param>
         ///// <param name="maximumRows">最大返回行数，0表示所有行</param>
         ///// <returns>记录数</returns>
-        //public static Int32 SearchCount(String key, String orderClause, Int32 startRowIndex, Int32 maximumRows)
-        //{
-        //    return FindCount(SearchWhere(key), null, null, 0, 0);
-        //}
+        public static Int32 SearchCount(String key, String orderClause, Int32 startRowIndex, Int32 maximumRows)
+        {
+            return FindCount(SearchWhere(key), null, null, 0, 0);
+        }
 
         /// <summary>构造搜索条件</summary>
         /// <param name="key">关键字</param>

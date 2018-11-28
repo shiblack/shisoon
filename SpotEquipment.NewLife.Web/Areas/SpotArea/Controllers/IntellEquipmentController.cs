@@ -16,8 +16,8 @@ namespace SpotEquipment.NewLife.Web.Areas.SpotArea.Controllers
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="number"></param>
-        /// <returns></returns>
+        /// <param name="id"></param>
        
+            
     }
 }
