@@ -1,0 +1,87 @@
+﻿@model IList<NewLife.Cube.Entity.SpotEuipments>
+@using NewLife;
+@using NewLife.Web;
+@using XCode;
+@using XCode.Configuration;
+@using System.Web.Mvc;
+@using System.Web.Mvc.Ajax;
+@using System.Web.Mvc.Html;
+@using System.Web.Routing;
+@{
+    var fact = ViewBag.Factory as IEntityOperate;
+    var page = ViewBag.Page as Pager;
+    var fields = ViewBag.Fields as IList<FieldItem>;
+    var enableSelect = this.EnableSelect();
+    //var provider = ManageProvider.Provider;
+}
+<table class="table table-bordered table-hover table-striped table-condensed">
+    <thead>
+        <tr>
+            @if (enableSelect)
+            {
+                <th class="text-center" style="width:10px;"><input type="checkbox" id="chkAll" title="全选" /></th>
+            }
+            <th class="text-center hidden-md hidden-sm hidden-xs"><a href="@Html.Raw(page.GetSortUrl("ID"))">编号</a></th>
+            <th class="text-center"><a href="@Html.Raw(page.GetSortUrl("Number"))">设备编号</a></th>
+            <th class="text-center"><a href="@Html.Raw(page.GetSortUrl("OwnedEnterprise"))">所属企业</a></th>
+            <th class="text-center"><a href="@Html.Raw(page.GetSortUrl("AssetNumber"))">资产编码</a></th>
+            <th class="text-center"><a href="@Html.Raw(page.GetSortUrl("Name"))">名称</a></th>
+            <th class="text-center"><a href="@Html.Raw(page.GetSortUrl("SpecificationModel"))">规格型号</a></th>
+            <th class="text-center"><a href="@Html.Raw(page.GetSortUrl("EquipmentType"))">设备类型</a></th>
+            <th class="text-center"><a href="@Html.Raw(page.GetSortUrl("Manufacturer"))">生产厂家</a></th>
+            <th class="text-center"><a href="@Html.Raw(page.GetSortUrl("DeviceSerialNumber"))">设备序列号</a></th>
+            <th class="text-center"><a href="@Html.Raw(page.GetSortUrl("Purpose"))">用途</a></th>
+            <th class="text-center" style="min-width:134px;"><a href="@Html.Raw(page.GetSortUrl("InstallationTime"))">安装时间</a></th>
+            <th class="text-center"><a href="@Html.Raw(page.GetSortUrl("IntstallationPerson"))">安装人员</a></th>
+            <th class="text-center"><a href="@Html.Raw(page.GetSortUrl("DetailedInstallPlace"))">详细安装地址</a></th>
+            <th class="text-center"><a href="@Html.Raw(page.GetSortUrl("Position"))">位置</a></th>
+            <th class="text-center"><a href="@Html.Raw(page.GetSortUrl("GPSPosition"))">GPS位置</a></th>
+            <th class="text-center"><a href="@Html.Raw(page.GetSortUrl("LiveImage"))">现场图片</a></th>
+            <th class="text-center"><a href="@Html.Raw(page.GetSortUrl("EquipmentState"))">设备状态</a></th>
+            <th class="text-center"><a href="@Html.Raw(page.GetSortUrl("PowerSupplyMode"))">供电方式</a></th>
+            <th class="text-center" style="min-width:134px;"><a href="@Html.Raw(page.GetSortUrl("DiscardedTime"))">报废时间</a></th>
+            <th class="text-center"><a href="@Html.Raw(page.GetSortUrl("DiscardedReason"))">报废原因</a></th>
+            @if (this.Has(PermissionFlags.Detail, PermissionFlags.Update, PermissionFlags.Delete))
+            {
+                <th class="text-center" style="min-width:100px;">操作</th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var entity in Model)
+        {
+            <tr>
+                @if (enableSelect)
+                {
+                    <td class="text-center"><input type="checkbox" name="keys" value="@entity.ID" /></td>
+                }
+                <td class="text-center hidden-md hidden-sm hidden-xs">@entity.ID</td>
+                <td class="text-right">@entity.Number.ToString("n0")</td>
+                <td>@entity.OwnedEnterprise</td>
+                <td>@entity.AssetNumber</td>
+                <td>@entity.Name</td>
+                <td>@entity.SpecificationModel</td>
+                <td class="text-center">@entity.EquipmentType</td>
+                <td>@entity.Manufacturer</td>
+                <td>@entity.DeviceSerialNumber</td>
+                <td class="text-center">@entity.Purpose</td>
+                <td>@entity.InstallationTime.ToFullString("")</td>
+                <td>@entity.IntstallationPerson</td>
+                <td>@entity.DetailedInstallPlace</td>
+                <td>@entity.Position</td>
+                <td>@entity.GPSPosition</td>
+                <td>@entity.LiveImage</td>
+                <td class="text-center">@entity.EquipmentState</td>
+                <td class="text-center">@entity.PowerSupplyMode</td>
+                <td>@entity.DiscardedTime.ToFullString("")</td>
+                <td>@entity.DiscardedReason</td>
+                @if (this.Has(PermissionFlags.Detail, PermissionFlags.Update, PermissionFlags.Delete))
+                {
+                    <td class="text-center">
+                        @Html.Partial("_List_Data_Action", (Object)entity)
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>

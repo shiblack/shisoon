@@ -185,6 +185,7 @@
     <Content Include="Areas\SpotArea\Views\SpotEquipment\_Form_Body.cshtml" />
     <Content Include="Areas\SpotArea\Views\ValveEquipment\_Form_Body.cshtml" />
     <Content Include="Areas\SpotArea\Views\FlowEquipment\_List_Data.cshtml" />
+    <Content Include="Areas\SpotArea\Views\SpotEquipment\_List_Data.cshtml" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
