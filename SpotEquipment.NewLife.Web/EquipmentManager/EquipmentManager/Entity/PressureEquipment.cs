@@ -1,7 +1,7 @@
 ﻿/*
  * XCoder v4.8.4531.242
  * 作者：sk/DESKTOP-I6PMUKT
- * 时间：2018-11-27 19:50:37
+ * 时间：2018-11-28 15:10:57
  * 版权：版权所有 (C) 新生命开发团队 2018
 */
 ﻿using System;
@@ -205,7 +205,7 @@ namespace NewLife.Cube.Entity
         #endregion
 
         #region 字段名
-        /// <summary>取得字段信息的快捷方式</summary>
+        /// <summary>取得压力设备字段信息的快捷方式</summary>
         public class _
         {
             ///<summary>编号</summary>
@@ -246,7 +246,7 @@ namespace NewLife.Cube.Entity
         #endregion
     }
 
-    /// <summary>接口</summary>
+    /// <summary>压力设备接口</summary>
     public partial interface IPressureEquipment
     {
         #region 属性

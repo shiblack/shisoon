@@ -1,7 +1,7 @@
 ﻿/*
  * XCoder v4.8.4531.242
  * 作者：sk/DESKTOP-I6PMUKT
- * 时间：2018-11-27 19:50:40
+ * 时间：2018-11-28 15:10:53
  * 版权：版权所有 (C) 新生命开发团队 2018
 */
 ﻿using System;
@@ -15,7 +15,7 @@ using XCode.Configuration;
 
 namespace NewLife.Cube.Entity
 {
-    /// <summary></summary>
+    /// <summary>压力设备</summary>
     public partial class PressureEquipment : Entity<PressureEquipment>
     {
         #region 对象操作﻿
@@ -63,7 +63,7 @@ namespace NewLife.Cube.Entity
         //    if (Meta.Count > 0) return;
 
         //    // 需要注意的是，如果该方法调用了其它实体类的首次数据库操作，目标实体类的数据初始化将会在同一个线程完成
-        //    if (XTrace.Debug) XTrace.WriteLine("开始初始化{0}PressureEquipment数据……", typeof(PressureEquipment).Name);
+        //    if (XTrace.Debug) XTrace.WriteLine("开始初始化{0}压力设备数据……", typeof(PressureEquipment).Name);
 
         //    var entity = new PressureEquipment();
         //    entity.Name = "admin";
@@ -73,7 +73,7 @@ namespace NewLife.Cube.Entity
         //    entity.IsEnable = true;
         //    entity.Insert();
 
-        //    if (XTrace.Debug) XTrace.WriteLine("完成初始化{0}PressureEquipment数据！", typeof(PressureEquipment).Name);
+        //    if (XTrace.Debug) XTrace.WriteLine("完成初始化{0}压力设备数据！", typeof(PressureEquipment).Name);
         //}
         #endregion
 
@@ -122,7 +122,7 @@ namespace NewLife.Cube.Entity
             var exp = new WhereExpression();
 
             // SearchWhereByKeys系列方法用于构建针对字符串字段的模糊搜索
-           // if (!String.IsNullOrEmpty(key)) SearchWhereByKeys(exp.Builder, key);
+            if (!String.IsNullOrEmpty(key)) SearchWhereByKeys(exp.Builder, key);
 
             // 以下仅为演示，2、3行是同一个意思的不同写法，Field（继承自FieldItem）重载了==、!=、>、<、>=、<=等运算符（第4行）
             //exp &= _.Name == "testName"
