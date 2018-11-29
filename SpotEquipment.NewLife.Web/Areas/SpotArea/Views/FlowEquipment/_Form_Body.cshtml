@@ -6,6 +6,8 @@
     var entity = Model;
     var fields = ViewBag.Fields as IList<FieldItem>;
     var isNew = (entity as IEntity).IsNullKey;
+  
+
 }
 
 <div class="form-group col-xs-12 col-sm-6 col-lg-4">
@@ -115,10 +117,11 @@
 @Html.Partial("_Form_Footer", entity)
 @if (this.Has(PermissionFlags.Insert, PermissionFlags.Update))
 {
-    <div class="clearfix form-actions col-sm-12 col-md-12">
-        <label class="control-label col-xs-4 col-sm-5 col-md-5"></label>
-        <button type="submit" class="btn btn-success btn-sm"><i class="glyphicon glyphicon-@(isNew ? "plus" : "save")"></i><strong>@(isNew ? "新增" : "保存")</strong></button>
-        <button type="button" class="btn btn-danger btn-sm" onclick="history.go(-1);"><i class="glyphicon glyphicon-remove"></i><strong>取消</strong></button>
-        <a href="FlowEquipment/GetSpotEdit">编辑公共属性</a>
-    </div>
+<div class="clearfix form-actions col-sm-12 col-md-12">
+    <label class="control-label col-xs-4 col-sm-5 col-md-5"></label>
+    <button type="submit" class="btn btn-success btn-sm"><i class="glyphicon glyphicon-@(isNew ? "plus" : "save")"></i><strong>@(isNew ? "新增" : "保存")</strong></button>
+    <button type="button" class="btn btn-danger btn-sm" onclick="history.go(-1);"><i class="glyphicon glyphicon-remove"></i><strong>取消</strong></button>
+    <a href="/FlowEquipment/GetSpotEdit" class="easyui-linkbutton" plain="true" iconCls="icon-power-blue">编辑公共属性</a>
+
+</div>
 }

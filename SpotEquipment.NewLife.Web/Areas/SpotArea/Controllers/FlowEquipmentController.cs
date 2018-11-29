@@ -8,6 +8,7 @@ using NewLife.Cube.Entity;
 using NewLife.Web;
 using System.Configuration;
 using System.Data.SqlClient;
+using XCode;
 
 namespace SpotEquipment.NewLife.Web.Areas.SpotArea.Controllers
 {
@@ -32,11 +33,20 @@ namespace SpotEquipment.NewLife.Web.Areas.SpotArea.Controllers
         //    var classid = p["Number1"].ToInt();
         //    return FlowEquipment.Search(p["q"], "ID", 0, 1);
         //}
-
-        public ActionResult GetSpotEdit(int i)
+        public static Entity<SpotEuipments> Search(int key)
         {
+            var s = SpotEuipments.Find("ID", key);
+            return s;
+        }
+
+        public ActionResult GetSpotEdit()
+        {
+            var page = ViewBag.Page as Pager;
+            var fid = page["Number1"].ToInt();
+            var s = Search(fid);
+            var sid = s["ID"].ToInt();
             Session.Abandon();
-            return RedirectToAction("SpotEuipment/Edit/" + i.ToString());
+            return RedirectToAction("/Edit/"+sid.ToString(), "SpotEuipment");
         }
 
     }
