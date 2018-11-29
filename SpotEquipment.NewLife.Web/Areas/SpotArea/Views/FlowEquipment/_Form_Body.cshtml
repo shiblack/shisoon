@@ -6,9 +6,11 @@
     var entity = Model;
     var fields = ViewBag.Fields as IList<FieldItem>;
     var isNew = (entity as IEntity).IsNullKey;
-  
+    var page = ViewBag.Page as Pager;
+    var fid = page["Number1"].ToInt();
 
 }
+
 
 <div class="form-group col-xs-12 col-sm-6 col-lg-4">
     <label class="control-label col-xs-3 col-sm-3">设备编号</label>
@@ -121,7 +123,8 @@
     <label class="control-label col-xs-4 col-sm-5 col-md-5"></label>
     <button type="submit" class="btn btn-success btn-sm"><i class="glyphicon glyphicon-@(isNew ? "plus" : "save")"></i><strong>@(isNew ? "新增" : "保存")</strong></button>
     <button type="button" class="btn btn-danger btn-sm" onclick="history.go(-1);"><i class="glyphicon glyphicon-remove"></i><strong>取消</strong></button>
-    <a href="/FlowEquipment/GetSpotEdit" class="easyui-linkbutton" plain="true" iconCls="icon-power-blue">编辑公共属性</a>
+    <a  href="/FlowEquipment/GetSpotEdit" class="easyui-linkbutton" plain="true" iconCls="icon-power-blue">编辑公共属性</a>
+    @*<button type="submit" class="btn btn-success btn-sm"><i class="glyphicon glyphicon-@(isNew ? "save" : "save")"></i><strong>@(isNew ? "  保存" : "保存")</strong></button>*@
 
 </div>
 }

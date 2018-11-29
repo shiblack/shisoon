@@ -33,21 +33,17 @@ namespace SpotEquipment.NewLife.Web.Areas.SpotArea.Controllers
         //    var classid = p["Number1"].ToInt();
         //    return FlowEquipment.Search(p["q"], "ID", 0, 1);
         //}
-        public static Entity<SpotEuipments> Search(int key)
-        {
-            var s = SpotEuipments.Find("ID", key);
-            return s;
-        }
+        
 
-        public ActionResult GetSpotEdit()
+        public ActionResult GetSpotEdit(int A) 
         {
-            var page = ViewBag.Page as Pager;
-            var fid = page["Number1"].ToInt();
-            var s = Search(fid);
-            var sid = s["ID"].ToInt();
+
+            var s = FlowEquipment.Myss(5);
             Session.Abandon();
-            return RedirectToAction("/Edit/"+sid.ToString(), "SpotEuipment");
+            return RedirectToAction("/Edit/"+s.ToString(), "SpotEuipment");
         }
+       
+
 
     }
 }

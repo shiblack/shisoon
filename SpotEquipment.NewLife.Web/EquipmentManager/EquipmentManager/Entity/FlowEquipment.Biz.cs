@@ -84,8 +84,8 @@ namespace NewLife.Cube.Entity
         #endregion
 
         #region 扩展查询﻿
-       
-        
+
+
         #endregion
 
         #region 高级查询
@@ -104,7 +104,14 @@ namespace NewLife.Cube.Entity
         //{
         //    return FindAll(SearchWhere(key), orderClause, null, startRowIndex, maximumRows);
         //}
+        public static int Myss(int fid)
+        {
+            
+            var s = SpotEuipments.Find("Number", fid);
+            var id = s["ID"].ToInt();
+            return id;
 
+        }
         ///// <summary>
         ///// 查询满足条件的记录总数，分页和排序无效，带参数是因为ObjectDataSource要求它跟Search统一
         ///// </summary>
