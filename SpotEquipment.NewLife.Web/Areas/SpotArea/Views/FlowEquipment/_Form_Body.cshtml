@@ -7,10 +7,11 @@
     var fields = ViewBag.Fields as IList<FieldItem>;
     var isNew = (entity as IEntity).IsNullKey;
 }
+
 <div class="form-group col-xs-12 col-sm-6 col-lg-4">
     <label class="control-label col-xs-3 col-sm-3">设备编号</label>
     <div class="input-group col-xs-9 col-sm-9">
-        @Html.TextBox("Number1", @entity.Number1, new { @class = "form-control", role="number" })
+        @Html.TextBox("Number1", @entity.Number1, new { @class = "form-control", role = "number" })
     </div>
 </div>
 <div class="form-group col-xs-12 col-sm-6 col-lg-4">
@@ -118,5 +119,6 @@
         <label class="control-label col-xs-4 col-sm-5 col-md-5"></label>
         <button type="submit" class="btn btn-success btn-sm"><i class="glyphicon glyphicon-@(isNew ? "plus" : "save")"></i><strong>@(isNew ? "新增" : "保存")</strong></button>
         <button type="button" class="btn btn-danger btn-sm" onclick="history.go(-1);"><i class="glyphicon glyphicon-remove"></i><strong>取消</strong></button>
+        <a href="FlowEquipment/GetSpotEdit">编辑公共属性</a>
     </div>
 }

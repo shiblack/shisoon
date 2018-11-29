@@ -8,6 +8,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
+using System.Web.Mvc;
 using System.Xml.Serialization;
 using NewLife.Log;
 using XCode;
@@ -83,7 +84,19 @@ namespace NewLife.Cube.Entity
         #endregion
 
         #region 扩展查询﻿
-       
+        public static Int32 GetSpotID(int value)
+        {
+            var flow = Find("Number1", (object)value);
+            var fid = flow["Number1"].ToInt();
+            var s = Search(fid);
+            return s["ID"].ToInt();
+            
+        }
+        public static Entity<SpotEuipments> Search(int key)
+        {
+            var s= SpotEuipments.Find("ID", key);
+            return s;
+        }
         #endregion
 
         #region 高级查询
@@ -138,6 +151,7 @@ namespace NewLife.Cube.Entity
         #endregion
 
         #region 扩展操作
+        
         #endregion
 
         #region 业务

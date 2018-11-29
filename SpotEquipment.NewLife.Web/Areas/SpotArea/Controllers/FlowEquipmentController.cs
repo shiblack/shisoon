@@ -26,17 +26,18 @@ namespace SpotEquipment.NewLife.Web.Areas.SpotArea.Controllers
         //    return base.Find(key);
         //}
 
- 
+
         //protected override IEnumerable<FlowEquipment> Search(Pager p)
         //{
         //    var classid = p["Number1"].ToInt();
         //    return FlowEquipment.Search(p["q"], "ID", 0, 1);
         //}
-        /// <summary>
-        /// 查找现场设备id
-        /// </summary>
-        /// <param name="number"></param>
-        /// <returns></returns>
-        
+
+        public ActionResult GetSpotEdit(int i)
+        {
+            Session.Abandon();
+            return RedirectToAction("SpotEuipment/Edit/" + i.ToString());
+        }
+
     }
 }
