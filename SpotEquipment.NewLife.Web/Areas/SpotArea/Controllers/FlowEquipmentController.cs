@@ -35,9 +35,9 @@ namespace SpotEquipment.NewLife.Web.Areas.SpotArea.Controllers
         //}
         
 
-        public ActionResult GetSpotEdit(int A) 
+        public ActionResult GetSpotEdit() 
         {
-
+            
             var s = FlowEquipment.Myss(5);
             Session.Abandon();
             return RedirectToAction("/Edit/"+s.ToString(), "SpotEuipment");
