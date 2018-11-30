@@ -81,6 +81,14 @@ namespace NewLife.Cube.Entity
         #endregion
 
         #region 扩展查询﻿
+        public static int Myss(int fid)
+        {
+
+            var s = SpotEuipments.Find("Number", fid);
+            var id = s["ID"].ToInt();
+            return id;
+
+        }
         #endregion
 
         #region 高级查询

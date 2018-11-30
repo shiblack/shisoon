@@ -94,6 +94,14 @@ namespace NewLife.Cube.Entity
             // 单对象缓存
             //return Meta.SingleCache[id];
         }
+        public static int Myss(int fid)
+        {
+
+            var s = SpotEuipments.Find("Number", fid);
+            var id = s["ID"].ToInt();
+            return id;
+
+        }
         #endregion
 
         #region 高级查询

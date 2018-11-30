@@ -18,5 +18,14 @@ namespace SpotEquipment.NewLife.Web.Areas.SpotArea.Controllers
         /// </summary>
         /// <param name="number"></param>
         /// <returns></returns>
+        /// 
+
+        public ActionResult GetSpotEdit(Int32 fid)
+        {
+
+            var s = PressureEquipment.Myss(fid);
+            Session.Abandon();
+            return RedirectToAction("/Edit/" + s.ToString(), "SpotEuipment");
+        }
     }
 }

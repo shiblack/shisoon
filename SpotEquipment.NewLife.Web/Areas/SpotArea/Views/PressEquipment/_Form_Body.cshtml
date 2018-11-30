@@ -1,0 +1,82 @@
+﻿@model NewLife.Cube.Entity.PressureEquipment
+@using NewLife;
+@using XCode;
+@using XCode.Configuration;
+@{
+    var entity = Model;
+    var fields = ViewBag.Fields as IList<FieldItem>;
+    var isNew = (entity as IEntity).IsNullKey;
+}
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">设备编号</label>
+    <div class="input-group col-xs-9 col-sm-9">
+        @Html.TextBox("Number1", @entity.Number1, new { @class = "form-control", role="number" })
+    </div>
+</div>
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">现场设备编号</label>
+    <div class="input-group col-xs-9 col-sm-9">
+        <input class="form-control" id="SpotEquipmentNumber" name="SpotEquipmentNumber" type="text" value="@entity.SpotEquipmentNumber" />
+    </div>
+</div>
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">精度等级</label>
+    <div class="input-group col-xs-9 col-sm-9">
+        <input class="form-control" id="PrecisionGrade" name="PrecisionGrade" type="text" value="@entity.PrecisionGrade" />
+    </div>
+</div>
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">量程下限</label>
+    <div class="input-group col-xs-9 col-sm-9">
+        <input class="form-control" id="RangeMin" name="RangeMin" type="text" value="@entity.RangeMin" />
+    </div>
+</div>
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">量程上限</label>
+    <div class="input-group col-xs-9 col-sm-9">
+        <input class="form-control" id="RangeMax" name="RangeMax" type="text" value="@entity.RangeMax" />
+    </div>
+</div>
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">检定周期年</label>
+    <div class="input-group col-xs-9 col-sm-5">
+        <input class="form-control" id="VerificationPeriod" name="VerificationPeriod" type="text" value="@entity.VerificationPeriod" />
+    </div>
+    <span class="hidden-xs col-sm-4"><span class="middle">检定周期(年)</span></span>
+</div>
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">检定日期</label>
+    <div class="input-group col-xs-9 col-sm-9">
+        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+        @Html.TextBox("VerificationDay", @entity.VerificationDay.ToFullString(""), new { @class = "form-control date form_datetime" })
+    </div>
+</div>
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">有效期限</label>
+    <div class="input-group col-xs-9 col-sm-9">
+        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+        @Html.TextBox("ExpirationDate", @entity.ExpirationDate.ToFullString(""), new { @class = "form-control date form_datetime" })
+    </div>
+</div>
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">检定证书编号</label>
+    <div class="input-group col-xs-9 col-sm-9">
+        <input class="form-control" id="VerificationCertificateNumber" name="VerificationCertificateNumber" type="text" value="@entity.VerificationCertificateNumber" />
+    </div>
+</div>
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">检定结论</label>
+    <div class="input-group col-xs-9 col-sm-9">
+        <input class="form-control" id="VerificationConclusion" name="VerificationConclusion" type="text" value="@entity.VerificationConclusion" />
+    </div>
+</div>
+@Html.Partial("_Form_Footer", entity)
+@if (this.Has(PermissionFlags.Insert, PermissionFlags.Update))
+{
+<div class="clearfix form-actions col-sm-12 col-md-12">
+    <label class="control-label col-xs-4 col-sm-5 col-md-5"></label>
+    <button type="submit" class="btn btn-success btn-sm"><i class="glyphicon glyphicon-@(isNew ? "plus" : "save")"></i><strong>@(isNew ? "新增" : "保存")</strong></button>
+    <button type="button" class="btn btn-danger btn-sm" onclick="history.go(-1);"><i class="glyphicon glyphicon-remove"></i><strong>取消</strong></button>
+    <a href="/FlowEquipment/GetSpotEdit?fid=@entity.Number1" class="easyui-linkbutton" plain="true" iconCls="icon-power-blue">编辑公共属性</a>
+</div>
+}

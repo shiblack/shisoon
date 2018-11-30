@@ -17,7 +17,13 @@ namespace SpotEquipment.NewLife.Web.Areas.SpotArea.Controllers
         /// 
         /// </summary>
         /// <param name="id"></param>
-       
-            
+        public ActionResult GetSpotEdit(Int32 fid)
+        {
+
+            var s = IntelligentTerminal.Myss(fid);
+            Session.Abandon();
+            return RedirectToAction("/Edit/" + s.ToString(), "SpotEuipment");
+        }
+
     }
 }

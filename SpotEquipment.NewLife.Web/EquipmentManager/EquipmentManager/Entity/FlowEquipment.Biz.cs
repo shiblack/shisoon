@@ -112,10 +112,6 @@ namespace NewLife.Cube.Entity
             return id;
 
         }
-        public static IEntity<FlowEquipment> Search()
-        {
-
-        }
         ///// <summary>
         ///// 查询满足条件的记录总数，分页和排序无效，带参数是因为ObjectDataSource要求它跟Search统一
         ///// </summary>
