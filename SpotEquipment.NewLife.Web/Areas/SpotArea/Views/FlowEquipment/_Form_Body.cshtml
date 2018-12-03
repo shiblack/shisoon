@@ -6,19 +6,20 @@
     var entity = Model;
     var fields = ViewBag.Fields as IList<FieldItem>;
     var isNew = (entity as IEntity).IsNullKey;
+    var fid = entity.Number1;
 
 }
-<script type="text/javascript">
-    function cc(t) {
-        //document.getElementById("ss").click();
-        return confirm("确定要继续访问吗？");
-       // window.location.href = "/FlowEquipment/GetSpotEdit?fid=@entity.Number1";
-    }
-    function externalLinksConfirm(t) {
-        document.getElementById("ss").click();
-        setTimeout("cc(t)", 3000);
-       // window.location.href = "/FlowEquipment/GetSpotEdit?fid=@entity.Number1";
-        //return confirm("确定要继续访问吗？");
+<script>
+    $(function () {
+        $("#sa").click(function () {
+        {
+            window.location.href = "/FlowEquipment/GetSpotEdit?fid=@fid";
+        }})
+        //return confirm("Are you OK?");
+    })
+    function cc() {
+       // document.getElementById("sa").click();
+         window.location.href = "/FlowEquipment/GetSpotEdit?fid=@fid";
     }
 </script>
 
@@ -131,12 +132,12 @@
 {
 <div class="clearfix form-actions col-sm-12 col-md-12">
     <label class="control-label col-xs-4 col-sm-5 col-md-5"></label>
-    <button type="submit" class="btn btn-success btn-sm" id="ss"><i class="glyphicon glyphicon-@(isNew ? "plus" : "save")"></i><strong>@(isNew ? "新增" : "保存")</strong></button>
+    <button type="submit" class="btn btn-success btn-sm"><i class="glyphicon glyphicon-@(isNew ? "plus" : "save")"></i><strong>@(isNew ? "新增" : "保存")</strong></button>
     <button type="button" class="btn btn-danger btn-sm" onclick="history.go(-1);"><i class="glyphicon glyphicon-remove"></i><strong>取消</strong></button>
     @if (!isNew)
     {
-        //<a href="/FlowEquipment/GetSpotEdit?fid=@entity.Number1" class="easyui-linkbutton" plain="true" iconCls="icon-power-blue" onclick="return cc(this)">编辑公共属性</a>
-        <a href="javascript:void(0)" class="easyui-linkbutton" plain="true" iconCls="icon-power-blue" onclick="return externalLinksConfirm(this)">编辑</a>
+        <button type="button" class="btn btn-success btn-sm" onclick="cc()"><strong>编辑公共属性</strong></button>
+        @*<a href="/FlowEquipment/GetSpotEdit?fid=@entity.Number1" class="easyui-linkbutton" plain="true" iconCls="icon-power-blue" onclick="cc(this)">编辑公共属性</a>*@
     }
 
 </div>
