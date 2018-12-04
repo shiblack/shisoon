@@ -6,13 +6,19 @@
     var entity = Model;
     var fields = ViewBag.Fields as IList<FieldItem>;
     var isNew = (entity as IEntity).IsNullKey;
+    var fid = entity.Number1;
 }
-<script type="text/javascript">
-    function cl() {
-        //$("#button").click();
-        //var e = document.createEvent("MouseEvents");
-        //e.initEvent("click", true, true);
-        //document.getElementById("button").dispatchEvent(e);
+<script>
+    @*$(function () {
+        $("#sa").click(function () {
+        {
+            window.location.href = "/FlowEquipment/GetSpotEdit?fid=@fid";
+        }})
+        //return confirm("Are you OK?");
+    })*@
+    function cc() {
+       // document.getElementById("sa").click();
+         window.location.href = "/FlowEquipment/GetSpotEdit?fid=@fid";
     }
 </script>
 <div class="form-group col-xs-12 col-sm-6 col-lg-4">
@@ -60,7 +66,8 @@
     <button type="button" class="btn btn-danger btn-sm" onclick="history.go(-1);"><i class="glyphicon glyphicon-remove"></i><strong>取消</strong></button>
     @if (!isNew)
     {
-        <a href="/FlowEquipment/GetSpotEdit?fid=@entity.Number1" class="easyui-linkbutton" plain="true" iconCls="icon-power-blue" onclick="cl()">编辑公共属性</a>
+        <button type="button" class="btn btn-success btn-sm" onclick="cc()"><strong>编辑公共属性</strong></button>
+        @*<a href="/FlowEquipment/GetSpotEdit?fid=@entity.Number1" class="easyui-linkbutton" plain="true" iconCls="icon-power-blue" onclick="cc(this)">编辑公共属性</a>*@
     }
 </div>
 }

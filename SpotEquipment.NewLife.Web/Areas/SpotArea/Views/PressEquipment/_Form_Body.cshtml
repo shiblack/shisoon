@@ -6,7 +6,21 @@
     var entity = Model;
     var fields = ViewBag.Fields as IList<FieldItem>;
     var isNew = (entity as IEntity).IsNullKey;
+    var fid = entity.Number1;
 }
+<script>
+    @*$(function () {
+        $("#sa").click(function () {
+        {
+            window.location.href = "/FlowEquipment/GetSpotEdit?fid=@fid";
+        }})
+        //return confirm("Are you OK?");
+    })*@
+    function cc() {
+       // document.getElementById("sa").click();
+         window.location.href = "/FlowEquipment/GetSpotEdit?fid=@fid";
+    }
+</script>
 <div class="form-group col-xs-12 col-sm-6 col-lg-4">
     <label class="control-label col-xs-3 col-sm-3">设备编号</label>
     <div class="input-group col-xs-9 col-sm-9">
@@ -79,7 +93,8 @@
     <button type="button" class="btn btn-danger btn-sm" onclick="history.go(-1);"><i class="glyphicon glyphicon-remove"></i><strong>取消</strong></button>
     @if (!isNew)
     {
-        <a href="/FlowEquipment/GetSpotEdit?fid=@entity.Number1" class="easyui-linkbutton" plain="true" iconCls="icon-power-blue"><i class="glyphicon glyphicon-@(isNew ? "save" : "save")"></i>编辑公共属性</a>
+        <button type="button" class="btn btn-success btn-sm" onclick="cc()"><strong>编辑公共属性</strong></button>
+        @*<a href="/FlowEquipment/GetSpotEdit?fid=@entity.Number1" class="easyui-linkbutton" plain="true" iconCls="icon-power-blue" onclick="cc(this)">编辑公共属性</a>*@
     }
 </div>
 }
