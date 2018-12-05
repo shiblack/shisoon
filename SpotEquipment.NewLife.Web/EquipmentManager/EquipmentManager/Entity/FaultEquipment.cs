@@ -17,8 +17,8 @@ namespace NewLife.Cube.Entity
     /// <summary>故障设备</summary>
     [Serializable]
     [DataObject]
-    [Description("")]
-    [BindTable("FaultEquipment", Description = "", ConnName = "Membership", DbType = DatabaseType.SqlServer)]
+    [Description("故障设备")]
+    [BindTable("FaultEquipment", Description = "故障设备", ConnName = "Membership", DbType = DatabaseType.SqlServer)]
     public partial class FaultEquipment : IFaultEquipment
     {
         #region 属性
@@ -36,7 +36,7 @@ namespace NewLife.Cube.Entity
 
         private Int32 _SpotEquipmentNumber1;
         /// <summary>设备编号</summary>
-        [DisplayName("SpotEquipmentNumber1")]
+        [DisplayName("设备编号")]
         [Description("设备编号")]
         [DataObjectField(false, false, true, 10)]
         [BindColumn(2, "SpotEquipmentNumber1", "设备编号", null, "int", 10, 0, false)]
@@ -48,7 +48,7 @@ namespace NewLife.Cube.Entity
 
         private String _Type;
         /// <summary>设备类型</summary>
-        [DisplayName("Type")]
+        [DisplayName("设备类型")]
         [Description("设备类型")]
         [DataObjectField(false, false, true, 10)]
         [BindColumn(3, "Type", "设备类型", null, "nchar(10)", 0, 0, true)]
@@ -60,7 +60,7 @@ namespace NewLife.Cube.Entity
 
         private DateTime _InstallationTime;
         /// <summary>安装时间</summary>
-        [DisplayName("InstallationTime")]
+        [DisplayName("安装时间")]
         [Description("安装时间")]
         [DataObjectField(false, false, true, 16)]
         [BindColumn(4, "InstallationTime", "安装时间", null, "smalldatetime", 0, 0, false)]
@@ -72,7 +72,7 @@ namespace NewLife.Cube.Entity
 
         private String _OccurLocation;
         /// <summary>发生地点</summary>
-        [DisplayName("OccurLocation")]
+        [DisplayName("发生地点")]
         [Description("发生地点")]
         [DataObjectField(false, false, true, 20)]
         [BindColumn(5, "OccurLocation", "发生地点", null, "nvarchar(20)", 0, 0, true)]
@@ -84,7 +84,7 @@ namespace NewLife.Cube.Entity
 
         private DateTime _OccurTime;
         /// <summary>发生时间</summary>
-        [DisplayName("OccurTime")]
+        [DisplayName("发生时间")]
         [Description("发生时间")]
         [DataObjectField(false, false, true, 16)]
         [BindColumn(6, "OccurTime", "发生时间", null, "smalldatetime", 0, 0, false)]
@@ -96,7 +96,7 @@ namespace NewLife.Cube.Entity
 
         private String _FaultReason;
         /// <summary故障原因</summary>
-        [DisplayName("FaultReason")]
+        [DisplayName("故障原因")]
         [Description("故障原因")]
         [DataObjectField(false, false, true, 50)]
         [BindColumn(7, "FaultReason", "故障原因", null, "nchar(50)", 0, 0, true)]
@@ -108,7 +108,7 @@ namespace NewLife.Cube.Entity
 
         private DateTime _RepairTime;
         /// <summary>维修时间</summary>
-        [DisplayName("RepairTime")]
+        [DisplayName("维修时间")]
         [Description("维修时间")]
         [DataObjectField(false, false, true, 16)]
         [BindColumn(8, "RepairTime", "维修时间", null, "smalldatetime", 0, 0, false)]
@@ -120,7 +120,7 @@ namespace NewLife.Cube.Entity
 
         private String _RepairPreson;
         /// <summary>维修人员</summary>
-        [DisplayName("RepairPreson")]
+        [DisplayName("维修人员")]
         [Description("维修人员")]
         [DataObjectField(false, false, true, 10)]
         [BindColumn(9, "RepairPreson", "维修人员", null, "nchar(10)", 0, 0, true)]
@@ -132,9 +132,9 @@ namespace NewLife.Cube.Entity
 
         private String _Remark;
         /// <summary>备注</summary>
-        [DisplayName("Remark")]
+        [DisplayName("备注")]
         [Description("备注")]
-        [DataObjectField(false, false, true, 2147483647)]
+        [DataObjectField(false, false, true, -1)]
         [BindColumn(10, "Remark", "备注", null, "text", 0, 0, false)]
         public virtual String Remark
         {

@@ -11,7 +11,7 @@
       <Column Name="FaultReason" DataType="String" RawType="nchar(50)" Description="故障原因" />
       <Column Name="RepairTime" DataType="DateTime" RawType="smalldatetime" Description="维修时间" />
       <Column Name="RepairPreson" DataType="String" RawType="nchar(10)" Length="10" Description="维修人员" />
-      <Column Name="Remark" DataType="String" RawType="text" Length="2147483647" Description="备注" />
+      <Column Name="Remark" DataType="String" RawType="text" Length="-1" Description="备注" />
     </Columns>
   </Table>
   <Table Name="FlowEquipment" Description="流量设备" DbType="SqlServer">
