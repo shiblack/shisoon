@@ -71,6 +71,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entity\FaultEquipment.Biz.cs" />
+    <Compile Include="Entity\FaultEquipment.cs" />
     <Compile Include="Entity\FlowEquipment.Biz.cs" />
     <Compile Include="Entity\FlowEquipment.cs" />
     <Compile Include="Entity\IntelligentTerminal.Biz.cs" />

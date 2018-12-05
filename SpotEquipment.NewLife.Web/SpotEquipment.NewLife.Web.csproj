@@ -150,6 +150,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\SpotArea\Controllers\FaultEquipmentController.cs" />
     <Compile Include="Areas\SpotArea\Controllers\FlowEquipmentController.cs" />
     <Compile Include="Areas\SpotArea\Controllers\IntellEquipmentController.cs" />
     <Compile Include="Areas\SpotArea\Controllers\PressEquipmentController.cs" />
@@ -198,7 +199,9 @@
     <Analyzer Include="..\packages\Microsoft.DependencyValidation.Analyzers.0.9.0\analyzers\dotnet\cs\Microsoft.DependencyValidation.Analyzers.resources.dll" />
     <Analyzer Include="..\packages\Microsoft.DependencyValidation.Analyzers.0.9.0\analyzers\dotnet\Microsoft.DependencyValidation.Analyzers.dll" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Areas\SpotArea\Views\FaultEquipment\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="EquipmentManager\EquipmentManager\EquipmentManager.csproj">
       <Project>{141667be-f7de-4cf6-907f-ffd34d4e7aa6}</Project>

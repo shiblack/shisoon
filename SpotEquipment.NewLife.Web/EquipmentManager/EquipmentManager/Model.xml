@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Tables Version="9.9.6870.42458" NameSpace="XCode.Membership" ConnName="Membership" Output="Entity" BaseClass="Entity">
-  <Table Name="FlowEquipment" DbType="SqlServer">
+<Tables Version="9.9.6870.42458">
+  <Table Name="FaultEquipment" DbType="SqlServer">
+    <Columns>
+      <Column Name="ID" DataType="Int32" Nullable="True" Description="ID" />
+      <Column Name="SpotEquipmentNumber1" DataType="Int32" Nullable="True" Description="设备编号" />
+      <Column Name="Type" DataType="String" RawType="nchar(10)" Length="10" Description="设备类型" />
+      <Column Name="InstallationTime" DataType="DateTime" RawType="smalldatetime" Description="安装时间" />
+      <Column Name="OccurLocation" DataType="String" Length="20" Description="发生地点" />
+      <Column Name="OccurTime" DataType="DateTime" RawType="smalldatetime" Description="发生时间" />
+      <Column Name="FaultReason" DataType="String" RawType="nchar(50)" Description="故障原因" />
+      <Column Name="RepairTime" DataType="DateTime" RawType="smalldatetime" Description="维修时间" />
+      <Column Name="RepairPreson" DataType="String" RawType="nchar(10)" Length="10" Description="维修人员" />
+      <Column Name="Remark" DataType="String" RawType="text" Length="2147483647" Description="备注" />
+    </Columns>
+  </Table>
+  <Table Name="FlowEquipment" Description="流量设备" DbType="SqlServer">
     <Columns>
       <Column Name="ID" DataType="Int32" Identity="True" PrimaryKey="True" Description="编号" />
       <Column Name="Number1" DataType="Int32" Nullable="True" Description="设备编号" />
@@ -9,9 +23,9 @@
       <Column Name="CustNumber" DataType="String" RawType="nchar(10)" Length="10" Description="客户编号" />
       <Column Name="Brand" DataType="String" RawType="nchar(20)" Length="20" Description="品牌" />
       <Column Name="Caliber" DataType="String" RawType="nchar(10)" Length="10" Description="口径" />
-      <Column Name="Accuracy" DataType="String" RawType="nchar(10)" Length="10" Description="精度" Type="EquipmentManager.NewType"/>
+      <Column Name="Accuracy" DataType="Int32" Nullable="True" Description="精度" />
       <Column Name="RangeRatio" DataType="String" RawType="nchar(10)" Length="10" Description="量程比" />
-      <Column Name="MeasureRange" DataType="String" RawType="nchar(10)" Length="10" Description="测量范围" Type="EquipmentManager.MerRange"/>
+      <Column Name="MeasureRange" DataType="Int32" Nullable="True" Description="测量范围" />
       <Column Name="MaxIndication" DataType="String" RawType="nchar(10)" Length="10" Description="最大示值" />
       <Column Name="ConnInterface" DataType="String" RawType="nchar(10)" Length="10" Description="通讯接口" />
       <Column Name="ConversionCoefficient" DataType="String" RawType="nchar(10)" Length="10" Description="转换系数" />
@@ -22,12 +36,12 @@
       <Column Name="VerificationConclusion" DataType="String" Length="-1" Description="检定结论" />
     </Columns>
   </Table>
-  <Table Name="IntelligentTerminal" DbType="SqlServer">
+  <Table Name="IntelligentTerminal" Description="智能终端" DbType="SqlServer">
     <Columns>
       <Column Name="ID" DataType="Int32" Identity="True" PrimaryKey="True" Description="编号" />
       <Column Name="Number1" DataType="Int32" Description="设备编号" />
       <Column Name="SpotEquipmentNumber" DataType="String" RawType="nchar(10)" Length="10" Description="现场设备编号" />
-      <Column Name="ConnMode" DataType="String" Description="通讯方式" />
+      <Column Name="ConnMode" DataType="Int32" Nullable="True" Description="通讯方式" />
       <Column Name="TelephoneNumber" DataType="String" Description="电话号码" />
       <Column Name="CostPackage" DataType="String" RawType="nchar(10)" Length="10" Description="费用套餐" />
       <Column Name="RenewalCycle" DataType="String" RawType="nchar(10)" Length="10" Description="续费周期" />
@@ -54,7 +68,7 @@
       <Index Columns="Name" />
     </Indexes>
   </Table>
-  <Table Name="PressureEquipment" DbType="SqlServer">
+  <Table Name="PressureEquipment" Description="压力设备" DbType="SqlServer">
     <Columns>
       <Column Name="ID" DataType="Int32" Identity="True" PrimaryKey="True" Description="编号" />
       <Column Name="Number1" DataType="Int32" Nullable="True" Description="设备编号" />
@@ -87,7 +101,7 @@
       <Index Columns="Name" Unique="True" />
     </Indexes>
   </Table>
-  <Table Name="SpotEuipments" DbType="SqlServer">
+  <Table Name="SpotEuipments" Description="现场设备" DbType="SqlServer">
     <Columns>
       <Column Name="ID" DataType="Int32" Identity="True" PrimaryKey="True" Description="编号" />
       <Column Name="Number" DataType="Int32" Nullable="True" Description="设备编号" />
@@ -95,10 +109,10 @@
       <Column Name="AssetNumber" DataType="String" Description="资产编码" />
       <Column Name="Name" DataType="String" RawType="nchar(10)" Master="True" Length="10" Description="名称" />
       <Column Name="SpecificationModel" DataType="String" RawType="nchar(10)" Length="10" Description="规格型号" />
-      <Column Name="EquipmentType" DataType="String" RawType="nchar(10)" Length="10" Description="设备类型" />
+      <Column Name="EquipmentType" DataType="Int32" Nullable="True" Description="设备类型" />
       <Column Name="Manufacturer" DataType="String" RawType="nchar(10)" Length="10" Description="生产厂家" />
       <Column Name="DeviceSerialNumber" DataType="String" RawType="nchar(10)" Length="10" Description="设备序列号" />
-      <Column Name="Purpose" DataType="String" RawType="nchar(10)" Length="10" Description="用途" />
+      <Column Name="Purpose" DataType="Int32" Nullable="True" Description="用途" />
       <Column Name="InstallationTime" DataType="DateTime" RawType="smalldatetime" Description="安装时间" />
       <Column Name="IntstallationPerson" DataType="String" RawType="nchar(10)" Length="10" Description="安装人员" />
       <Column Name="DetailedInstallPlace" DataType="String" RawType="nchar(50)" Description="详细安装地址" />
@@ -106,8 +120,8 @@
       <Column Name="LiveTips" DataType="String" Length="-1" Description="现场提示&lt;" />
       <Column Name="GPSPosition" DataType="String" Description="GPS位置" />
       <Column Name="LiveImage" DataType="String" RawType="nchar(10)" Length="10" Description="现场图片" />
-      <Column Name="EquipmentState" DataType="String" RawType="nchar(10)" Length="10" Description="设备状态" />
-      <Column Name="PowerSupplyMode" DataType="String" RawType="nchar(10)" Length="10" Description="供电方式" Type="" />
+      <Column Name="EquipmentState" DataType="Int32" Nullable="True" Description="设备状态" />
+      <Column Name="PowerSupplyMode" DataType="Int32" Nullable="True" Description="供电方式" />
       <Column Name="DiscardedTime" DataType="DateTime" RawType="smalldatetime" Description="报废时间" />
       <Column Name="DiscardedReason" DataType="String" RawType="nchar(10)" Length="10" Description="报废原因" />
       <Column Name="Remarks" DataType="String" Length="-1" Description="备注" />
@@ -119,7 +133,7 @@
       <Column Name="Name" DataType="String" Master="True" Nullable="False" Description="名称。登录用户名" />
       <Column Name="Password" DataType="String" Description="密码" />
       <Column Name="DisplayName" DataType="String" Description="昵称" />
-      <Column Name="Sex" DataType="Int32" Description="性别" />
+      <Column Name="Sex" DataType="Int32" Description="性别。未知、男、女" />
       <Column Name="Mail" DataType="String" Description="邮件" />
       <Column Name="Mobile" DataType="String" Description="手机" />
       <Column Name="Code" DataType="String" Description="代码。身份证、员工编号等" />
@@ -165,13 +179,13 @@
       <Index Columns="UserID" />
     </Indexes>
   </Table>
-  <Table Name="ValveEquipment" DbType="SqlServer">
+  <Table Name="ValveEquipment" Description="阀门设备" DbType="SqlServer">
     <Columns>
       <Column Name="ID" DataType="Int32" Identity="True" PrimaryKey="True" Description="编号" />
       <Column Name="Number1" DataType="Int32" Nullable="True" Description="设备编号" />
       <Column Name="SpotEquipmentNumber1" DataType="String" RawType="nchar(10)" Length="10" Description="现场设备编号" />
       <Column Name="MaterialScience" DataType="String" RawType="nchar(10)" Length="10" Description="材质" />
-      <Column Name="Type" DataType="String" RawType="nchar(10)" Length="10" Description="类型" />
+      <Column Name="Type" DataType="Int32" Nullable="True" Description="类型" />
       <Column Name="Caliber" DataType="String" RawType="nchar(10)" Length="10" Description="口径" />
       <Column Name="Purpose1" DataType="String" Length="-1" Description="用途" />
     </Columns>
