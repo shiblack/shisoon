@@ -48,8 +48,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="NewLife.Core, Version=7.3.6870.42457, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\NewLife.Core.7.3.6870.42457\lib\net45\NewLife.Core.dll</HintPath>
+    <Reference Include="NewLife.Core, Version=7.4.6911.41889, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NewLife.Core.7.4.6911.41889\lib\net45\NewLife.Core.dll</HintPath>
     </Reference>
     <Reference Include="NewLife.Cube, Version=2.4.6871.461, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\NewLife.Cube.2.4.6871.461\lib\net45\NewLife.Cube.dll</HintPath>
@@ -112,8 +112,8 @@
       <Private>True</Private>
       <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="XCode, Version=9.9.6870.42458, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\NewLife.XCode.9.9.6870.42458\lib\net45\XCode.dll</HintPath>
+    <Reference Include="XCode, Version=9.9.6911.41890, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NewLife.XCode.9.9.6911.41890\lib\net45\XCode.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -163,11 +163,16 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Build.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Build.log</LastGenOutput>
+    </Content>
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Areas\SpotArea\Views\web.config">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Model.xml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -189,6 +194,11 @@
     <Content Include="Areas\SpotArea\Views\SpotEquipment\_List_Data.cshtml" />
     <Content Include="Areas\SpotArea\Views\PressEquipment\_Form_Body.cshtml" />
     <Content Include="Areas\SpotArea\Views\ValveEquipment\_List_Data.cshtml" />
+    <Content Include="Build.log">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Build.tt</DependentUpon>
+    </Content>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
