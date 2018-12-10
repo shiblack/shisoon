@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace EquipmentManager
 {
+    /// <summary>
+    /// 枚举类
+    /// </summary>
     public enum NewType
     {
         //计量精度等级
