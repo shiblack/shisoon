@@ -1,0 +1,16 @@
+﻿using NewLife.Cube;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using NewLife.Cube.Entity;
+
+namespace SpotEquipment.NewLife.Web.Areas.SpotRe.Controllers
+{
+    public class SpotReController : EntityController<SpotRepairEquipment>
+    {
+        // GET: SpotRe/SpotRe
+       
+    }
+}

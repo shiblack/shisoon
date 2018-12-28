@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Tables Version="9.9.6870.42458">
+<Tables Version="9.9.6911.41890" Output="" NameSpace="" ConnName="" BaseClass="Entity">
   <Table Name="FaultEquipment" DbType="SqlServer">
     <Columns>
       <Column Name="ID" DataType="Int32" Nullable="True" Description="ID" />

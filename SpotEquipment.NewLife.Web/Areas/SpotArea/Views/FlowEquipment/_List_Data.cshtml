@@ -34,7 +34,7 @@
             <th class="text-center"><a href="@Html.Raw(page.GetSortUrl("MaxIndication"))">最大示值</a></th>
             <th class="text-center"><a href="@Html.Raw(page.GetSortUrl("ConnInterface"))">通讯接口</a></th>
             <th class="text-center"><a href="@Html.Raw(page.GetSortUrl("ConversionCoefficient"))">转换系数</a></th>
-            <th class="text-center"><a href="@Html.Raw(page.GetSortUrl("VerificationPeriod"))">检定周期（年）</a></th>
+            <th class="text-center" title="检定周期（年）"><a href="@Html.Raw(page.GetSortUrl("VerificationPeriod"))">检定周期年</a></th>
             <th class="text-center" style="min-width:134px;"><a href="@Html.Raw(page.GetSortUrl("VerificationDay"))">检定周期</a></th>
             <th class="text-center" style="min-width:134px;"><a href="@Html.Raw(page.GetSortUrl("ExpirationDateF"))">有效期限</a></th>
             <th class="text-center"><a href="@Html.Raw(page.GetSortUrl("VerificationCertificateNumber"))">鉴定证书编号</a></th>
@@ -59,9 +59,9 @@
                 <td>@entity.CustNumber</td>
                 <td>@entity.Brand</td>
                 <td>@entity.Caliber</td>
-                <td>@entity.Accuracy</td>
+                <td class="text-center">@entity.Accuracy</td>
                 <td>@entity.RangeRatio</td>
-                <td>@entity.MeasureRange</td>
+                <td class="text-center">@entity.MeasureRange</td>
                 <td>@entity.MaxIndication</td>
                 <td>@entity.ConnInterface</td>
                 <td>@entity.ConversionCoefficient</td>

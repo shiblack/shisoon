@@ -1,0 +1,133 @@
+﻿@model XCode.Membership.UserX
+@using NewLife;
+@using XCode;
+@using XCode.Configuration;
+@{
+    var entity = Model;
+    var fields = ViewBag.Fields as IList<FieldItem>;
+    var isNew = (entity as IEntity).IsNullKey;
+}
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">名称</label>
+    <div class="input-group col-xs-9 col-sm-5">
+        <input class="form-control" id="Name" name="Name" type="text" value="@entity.Name" />
+    </div>
+    <span class="hidden-xs col-sm-4"><span class="middle">登录用户名</span></span>
+</div>
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">密码</label>
+    <div class="input-group col-xs-9 col-sm-9">
+        <input class="form-control" id="Password" name="Password" type="password" value="@entity.Password" />
+    </div>
+</div>
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">昵称</label>
+    <div class="input-group col-xs-9 col-sm-9">
+        <input class="form-control" id="DisplayName" name="DisplayName" type="text" value="@entity.DisplayName" />
+    </div>
+</div>
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">性别</label>
+    <div class="input-group col-xs-9 col-sm-4">
+        @Html.ForEnum("Sex", @entity.Sex)
+    </div>
+    <span class="hidden-xs col-sm-5"><span class="middle">未知、男、女</span></span>
+</div>
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">邮件</label>
+    <div class="input-group col-xs-9 col-sm-9">
+        <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span><input class="form-control" id="Mail" name="Mail" type="email" value="@entity.Mail" /></div>
+    </div>
+</div>
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">手机</label>
+    <div class="input-group col-xs-9 col-sm-9">
+        <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span><input class="form-control" id="Mobile" name="Mobile" type="tel" value="@entity.Mobile" /></div>
+    </div>
+</div>
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">代码</label>
+    <div class="input-group col-xs-9 col-sm-5">
+        <input class="form-control" id="Code" name="Code" type="text" value="@entity.Code" />
+    </div>
+    <span class="hidden-xs col-sm-4"><span class="middle">身份证、员工编号等</span></span>
+</div>
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">头像</label>
+    <div class="input-group col-xs-9 col-sm-9">
+        <input class="form-control" id="Avatar" name="Avatar" type="text" value="@entity.Avatar" />
+    </div>
+</div>
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">角色</label>
+    <div class="input-group col-xs-9 col-sm-5">
+        @Html.ForDropDownList("RoleID", UserX.Meta.AllFields.First(e=>e.Name=="RoleName").Map.Provider.GetDataSource(), @entity.RoleID)
+    </div>
+    <span class="hidden-xs col-sm-4"><span class="middle">主要角色</span></span>
+</div>
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">角色组</label>
+    <div class="input-group col-xs-9 col-sm-5">
+        <input class="form-control" id="RoleIDs" name="RoleIDs" type="text" value="@entity.RoleIDs" />
+    </div>
+    <span class="hidden-xs col-sm-4"><span class="middle">次要角色集合</span></span>
+</div>
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">在线</label>
+    <div class="input-group col-xs-9 col-sm-9">
+        @Html.CheckBox("Online", @entity.Online, new { @class = "chkSwitch" })
+    </div>
+</div>
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">启用</label>
+    <div class="input-group col-xs-9 col-sm-9">
+        @Html.CheckBox("Enable", @entity.Enable, new { @class = "chkSwitch" })
+    </div>
+</div>
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">登录次数</label>
+    <div class="input-group col-xs-9 col-sm-9">
+        @Html.TextBox("Logins", @entity.Logins, new { @class = "form-control", role="number" })
+    </div>
+</div>
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">最后登录</label>
+    <div class="input-group col-xs-9 col-sm-9">
+        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+        @Html.TextBox("LastLogin", @entity.LastLogin.ToFullString(""), new { @class = "form-control date form_datetime" })
+    </div>
+</div>
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">最后登录IP</label>
+    <div class="input-group col-xs-9 col-sm-9">
+        <input class="form-control" id="LastLoginIP" name="LastLoginIP" type="text" value="@entity.LastLoginIP" />
+    </div>
+</div>
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">物理地址</label>
+    <div class="input-group col-xs-9 col-sm-9">
+        <label class="form-control">@entity.LastLoginAddress</label>
+    </div>
+</div>
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">注册时间</label>
+    <div class="input-group col-xs-9 col-sm-9">
+        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+        @Html.TextBox("RegisterTime", @entity.RegisterTime.ToFullString(""), new { @class = "form-control date form_datetime" })
+    </div>
+</div>
+<div class="form-group col-xs-12 col-sm-6 col-lg-4">
+    <label class="control-label col-xs-3 col-sm-3">注册IP</label>
+    <div class="input-group col-xs-9 col-sm-9">
+        <input class="form-control" id="RegisterIP" name="RegisterIP" type="text" value="@entity.RegisterIP" />
+    </div>
+</div>
+@Html.Partial("_Form_Footer", entity)
+@if (this.Has(PermissionFlags.Insert, PermissionFlags.Update))
+{
+    <div class="clearfix form-actions col-sm-12 col-md-12">
+        <label class="control-label col-xs-4 col-sm-5 col-md-5"></label>
+        <button type="submit" class="btn btn-success btn-sm"><i class="glyphicon glyphicon-@(isNew ? "plus" : "save")"></i><strong>@(isNew ? "新增" : "保存")</strong></button>
+        <button type="button" class="btn btn-danger btn-sm" onclick="history.go(-1);"><i class="glyphicon glyphicon-remove"></i><strong>取消</strong></button>
+    </div>
+}

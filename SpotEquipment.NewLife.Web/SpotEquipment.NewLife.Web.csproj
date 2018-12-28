@@ -64,22 +64,22 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.6\lib\net45\System.Web.Helpers.dll</HintPath>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
     </Reference>
-    <Reference Include="System.Web.Mvc, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.6\lib\net45\System.Web.Mvc.dll</HintPath>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.6\lib\net45\System.Web.Razor.dll</HintPath>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.6\lib\net45\System.Web.WebPages.dll</HintPath>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.6\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.6\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
@@ -150,23 +150,26 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Areas\SpotArea\Controllers\FaultEquipmentController.cs" />
+    <Compile Include="Areas\DocumentManager\Controllers\EnclosureController.cs" />
+    <Compile Include="Areas\DocumentManager\DocumentManagerAreaRegistration.cs" />
+    <Compile Include="Areas\EquipmentAccident\Controllers\FaultEquipmentController.cs" />
+    <Compile Include="Areas\EquipmentAccident\EquipmentAccidentAreaRegistration.cs" />
+    <Compile Include="Areas\SparePartsManagement\Controllers\SparController.cs" />
+    <Compile Include="Areas\SparePartsManagement\SparePartsManagementAreaRegistration.cs" />
     <Compile Include="Areas\SpotArea\Controllers\FlowEquipmentController.cs" />
     <Compile Include="Areas\SpotArea\Controllers\IntellEquipmentController.cs" />
     <Compile Include="Areas\SpotArea\Controllers\PressEquipmentController.cs" />
     <Compile Include="Areas\SpotArea\Controllers\SpotEuipmentController.cs" />
     <Compile Include="Areas\SpotArea\Controllers\ValveEquipmentController.cs" />
     <Compile Include="Areas\SpotArea\SpotAreaAreaRegistration.cs" />
+    <Compile Include="Areas\SpotRe\Controllers\SpotReController.cs" />
+    <Compile Include="Areas\SpotRe\SpotReAreaRegistration.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Build.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Build.log</LastGenOutput>
-    </Content>
     <Content Include="Content\ace\css\ace-fonts.min.css" />
     <Content Include="Content\ace\css\ace-ie.min.css" />
     <Content Include="Content\ace\css\ace-part2.min.css" />
@@ -243,6 +246,16 @@
     <Content Include="Content\js\jquery.validate.min.js" />
     <Content Include="Content\js\jquery1x.min.js" />
     <Content Include="Content\js\respond.min.js" />
+    <Content Include="Content\Site.css" />
+    <Content Include="demo\js\snow.js" />
+    <Content Include="lib\uploader\jquery.fileupload.js" />
+    <Content Include="lib\uploader\jquery.iframe-transport.js" />
+    <Content Include="lib\uploader\jquery.ui.widget.js" />
+    <Content Include="lib\uploader\Moxie.swf" />
+    <Content Include="lib\uploader\zui.uploader.css" />
+    <Content Include="lib\uploader\zui.uploader.js" />
+    <Content Include="lib\uploader\zui.uploader.min.css" />
+    <Content Include="lib\uploader\zui.uploader.min.js" />
     <Content Include="demo\css\bootstrap.css" />
     <Content Include="demo\css\bootstrap.min.css" />
     <Content Include="demo\css\demo\fonts\nifty-demo-icons.svg" />
@@ -2903,7 +2916,6 @@
     <Content Include="Areas\SpotArea\Views\web.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Model.xml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -2925,11 +2937,6 @@
     <Content Include="Areas\SpotArea\Views\SpotEquipment\_List_Data.cshtml" />
     <Content Include="Areas\SpotArea\Views\PressEquipment\_Form_Body.cshtml" />
     <Content Include="Areas\SpotArea\Views\ValveEquipment\_List_Data.cshtml" />
-    <Content Include="Build.log">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Build.tt</DependentUpon>
-    </Content>
     <Content Include="Content\ace\fonts\OpenSans-300.woff" />
     <Content Include="Content\ace\fonts\OpenSans-400.woff" />
     <Content Include="Content\bootstrap\fonts\fontawesome-webfont.eot" />
@@ -3208,7 +3215,32 @@
     <Content Include="demo\plugins\weather-icons\sass\weather-icons.scss" />
     <Content Include="demo\plugins\x-editable\LICENSE-MIT" />
     <Content Include="demo\plugins\x-editable\README.md" />
+    <Content Include="lib\uploader\Moxie.xap" />
+    <Content Include="Areas\SparePartsManagement\Views\web.config" />
+    <Content Include="Areas\EquipmentAccident\Views\web.config" />
+    <Content Include="Areas\DocumentManager\Views\web.config" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\Index\_Left.cshtml" />
+    <Content Include="Areas\Admin\Views\Index\_Left_Item.cshtml" />
+    <Content Include="Areas\Admin\Views\Index\_NavBar.cshtml" />
+    <Content Include="Areas\Admin\Views\Index\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\User\Info.cshtml" />
+    <Content Include="Areas\Admin\Views\User\Login.cshtml" />
+    <Content Include="Areas\Admin\Views\User\_Form_Action.cshtml" />
+    <Content Include="Areas\Admin\Views\User\_Form_Body.cshtml" />
+    <Content Include="Areas\Admin\Views\User\_List_Data.cshtml" />
+    <Content Include="Areas\Admin\Views\User\_List_Search.cshtml" />
+    <Content Include="Areas\Admin\Views\User\_List_Toolbar_Batch.cshtml" />
+    <Content Include="Areas\Admin\Views\User\_Login_Forgot.cshtml" />
+    <Content Include="Areas\Admin\Views\User\_Login_Login.cshtml" />
+    <Content Include="Areas\Admin\Views\User\_Login_Login3.cshtml" />
+    <Content Include="Areas\Admin\Views\User\_Login_Register.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Object_Nav.cshtml" />
+    <Content Include="Areas\SpotRe\Views\web.config" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <None Include="packages.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Upload.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
@@ -3219,9 +3251,16 @@
     <Analyzer Include="..\packages\Microsoft.DependencyValidation.Analyzers.0.9.0\analyzers\dotnet\Microsoft.DependencyValidation.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Areas\Admin\Views\" />
-    <Folder Include="Areas\SpotArea\Views\FaultEquipment\" />
+    <Folder Include="Areas\DocumentManager\Views\Enclosure\" />
+    <Folder Include="Areas\DocumentManager\Views\Shared\" />
+    <Folder Include="Areas\EquipmentAccident\Views\FaultEquipment\" />
+    <Folder Include="Areas\EquipmentAccident\Views\Shared\" />
+    <Folder Include="Areas\SparePartsManagement\Views\Shared\" />
+    <Folder Include="Areas\SparePartsManagement\Views\Spar\" />
+    <Folder Include="Areas\SpotRe\Views\Shared\" />
+    <Folder Include="Areas\SpotRe\Views\SpotRe\" />
     <Folder Include="demo\plugins\flot-charts\examples\gauge\" />
+    <Folder Include="Resouce\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="EquipmentManager\EquipmentManager\EquipmentManager.csproj">

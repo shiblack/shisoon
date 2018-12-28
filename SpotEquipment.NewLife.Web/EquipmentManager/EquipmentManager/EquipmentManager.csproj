@@ -71,6 +71,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entity\Enclosure.Biz.cs" />
+    <Compile Include="Entity\Enclosure.cs" />
     <Compile Include="Entity\FaultEquipment.Biz.cs" />
     <Compile Include="Entity\FaultEquipment.cs" />
     <Compile Include="Entity\FlowEquipment.Biz.cs" />
@@ -79,8 +81,12 @@
     <Compile Include="Entity\IntelligentTerminal.cs" />
     <Compile Include="Entity\PressureEquipment.Biz.cs" />
     <Compile Include="Entity\PressureEquipment.cs" />
+    <Compile Include="Entity\SpareManagment.Biz.cs" />
+    <Compile Include="Entity\SpareManagment.cs" />
     <Compile Include="Entity\SpotEuipments.Biz.cs" />
     <Compile Include="Entity\SpotEuipments.cs" />
+    <Compile Include="Entity\SpotRepairEquipment.Biz.cs" />
+    <Compile Include="Entity\SpotRepairEquipment.cs" />
     <Compile Include="Entity\ValveEquipment.Biz.cs" />
     <Compile Include="Entity\ValveEquipment.cs" />
     <Compile Include="NewType.cs" />
@@ -92,6 +98,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Build.tt</DependentUpon>
     </None>
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -99,7 +106,9 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Build.log</LastGenOutput>
     </Content>
-    <Content Include="Model.xml" />
+    <Content Include="Model.xml">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

@@ -1,0 +1,135 @@
+﻿@using NewLife.Model;
+@{
+    var user = ViewBag.User as IUser ?? User.Identity as IUser;
+
+    var fact = ObjectContainer.Current.Resolve<IMenuFactory>();
+
+    var Menus = fact.Root.Childs;
+    if (user != null && user.Role != null)
+    {
+        Menus = fact.GetMySubMenus(fact.Root.ID, user);
+    }
+
+    // 如果顶级只有一层，并且至少有三级目录，则提升一级
+    if (Menus.Count == 1 && Menus[0].Childs.All(m => m.Childs.Count > 0)) { Menus = Menus[0].Childs; }
+
+    String[] icos = new String[] { "demo-pli-home", "demo-pli-split-vertical-2", "demo-pli-receipt-4", "demo-pli-warning-window", "demo-pli-computer-secure", "demo-pli-file-html", "demo-pli-inbox-full", "demo-pli-repair", "demo-pli-tactic" };//图标
+    Int32 _idx = 0;
+}
+
+<nav id="mainnav-container">
+    <div id="mainnav">
+        <!--Menu-->
+        <!--================================-->
+        <div id="mainnav-menu-wrap">
+            <div class="nano">
+                <div class="nano-content">
+
+                    <!--Profile Widget-->
+                    <!--================================-->
+                    <div id="mainnav-profile" class="mainnav-profile">
+                        <div class="profile-wrap text-center">
+                            <div class="pad-btm">
+                                <img class="img-circle img-md" src="~/demo/img/profile-photos/1.png" alt="Profile Picture">
+                            </div>
+                            <a href="#profile-nav" class="box-block" data-toggle="collapse" aria-expanded="false">
+                                <span class="pull-right dropdown-toggle">
+                                    <i class="dropdown-caret"></i>
+                                </span>
+                                <p class="mnp-name">Aaron Chavez</p>
+                                <span class="mnp-desc">aaron.cha@themeon.net</span>
+                            </a>
+                        </div>
+                        <div id="profile-nav" class="collapse list-group bg-trans">
+                            <a href="#" class="list-group-item">
+                                <i class="demo-pli-male icon-lg icon-fw"></i> View Profile
+                            </a>
+                            <a href="#" class="list-group-item">
+                                <i class="demo-pli-gear icon-lg icon-fw"></i> Settings
+                            </a>
+                            <a href="#" class="list-group-item">
+                                <i class="demo-pli-information icon-lg icon-fw"></i> Help
+                            </a>
+                            <a href="#" class="list-group-item">
+                                <i class="demo-pli-unlock icon-lg icon-fw"></i> Logout
+                            </a>
+                        </div>
+                    </div>
+
+
+                    <!--Shortcut buttons-->
+                    <!--================================-->
+                    <div id="mainnav-shortcut" class="hidden">
+                        <ul class="list-unstyled shortcut-wrap">
+                            <li class="col-xs-3" data-content="My Profile">
+                                <a class="shortcut-grid" href="#">
+                                    <div class="icon-wrap icon-wrap-sm icon-circle bg-mint">
+                                        <i class="demo-pli-male"></i>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="col-xs-3" data-content="Messages">
+                                <a class="shortcut-grid" href="#">
+                                    <div class="icon-wrap icon-wrap-sm icon-circle bg-warning">
+                                        <i class="demo-pli-speech-bubble-3"></i>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="col-xs-3" data-content="Activity">
+                                <a class="shortcut-grid" href="#">
+                                    <div class="icon-wrap icon-wrap-sm icon-circle bg-success">
+                                        <i class="demo-pli-thunder"></i>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="col-xs-3" data-content="Lock Screen">
+                                <a class="shortcut-grid" href="#">
+                                    <div class="icon-wrap icon-wrap-sm icon-circle bg-purple">
+                                        <i class="demo-pli-lock-2"></i>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--================================-->
+                    <!--End shortcut buttons-->
+
+
+                    <ul id="mainnav-menu" class="list-group">
+
+                        <!--Category name-->
+                        @foreach (IMenu menu in Menus.Where(m => m.Visible))
+                        {
+                            var childs = fact.GetMySubMenus(menu.ID, user).Where(m => m.Visible);
+                            if (_idx >= icos.Length) { _idx = 0; }
+
+                            <li @Html.Raw(menu == Menus[0] ? "" : "")>
+                                <!--Menu list item-->
+                                <a href="#">
+                                        <i class="@icos[_idx++]"></i>
+                                        <span class="menu-title">@menu.DisplayName</span>
+                                        <i class="arrow"></i>
+                                </a>
+
+                                <!--Submenu-->
+                                @if (childs.Any())
+                                {
+                                    <ul>
+
+                                        @foreach (IMenu menu2 in childs)
+                                        {
+                                            @Html.Partial("_Left_Item", menu2);
+                                        }
+                                    </ul>
+                                }
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+

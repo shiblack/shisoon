@@ -9,6 +9,7 @@ using NewLife.Web;
 using System.Configuration;
 using System.Data.SqlClient;
 using XCode;
+using System.IO;
 
 namespace SpotEquipment.NewLife.Web.Areas.SpotArea.Controllers
 {
@@ -35,6 +36,7 @@ namespace SpotEquipment.NewLife.Web.Areas.SpotArea.Controllers
         //}
         
 
+        
         public ActionResult GetSpotEdit(Int32 fid) 
         {
             
@@ -42,8 +44,26 @@ namespace SpotEquipment.NewLife.Web.Areas.SpotArea.Controllers
             Session.Abandon();
             return RedirectToAction("/Edit/"+s.ToString(), "SpotEuipment");
         }
-       
-
-
+        /// <summary>
+        /// 上传文件
+        /// </summary>
+        /// <param name="file"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult Upload(HttpPostedFileBase file)
+        {
+            ViewBag.Recount = "/FlowEquipment/Upload";
+            if (file != null)
+            {
+                string fileName = Path.GetFileName(file.FileName);
+                string path = Server.MapPath(string.Format("~/{0}", "Resouce"));
+                if (!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                }
+                file.SaveAs(Path.Combine(path, fileName));
+            }
+            return View();
+        }
     }
 }

@@ -1,0 +1,48 @@
+﻿@using NewLife.Cube.Web;
+@{
+    var set = NewLife.Cube.Setting.Current;
+    var returnUrl = ViewBag.ReturnUrl as String;
+    var ms = NewLife.Web.OAuthConfig.Current.Items.Where(e => !e.AppID.IsNullOrEmpty()).ToList();
+    var dic = "NewLife=新生命,Baidu=百度,Weixin=微信,Taobao=淘宝".SplitAsDictionary("=", ",");
+}
+
+@if (ms.Count > 0 && set.AutoRegister)
+{
+<div class="media pad-top bord-top">
+
+    <div class="pull-right">
+        @foreach (var mi in ms)
+        {
+            var nickName = "";
+            if (!dic.TryGetValue(mi.Name, out nickName))
+            {
+                nickName = mi.Name;
+            }
+
+            var url = "Sso/Login?name=" + mi.Name;
+            if (!returnUrl.IsNullOrEmpty())
+            {
+                url += "&r=" + HttpUtility.UrlEncode(returnUrl);
+            }
+
+            url = HttpRuntime.AppDomainAppVirtualPath + url;
+            var logo = ViewHelper.GetLogo(mi.Name);
+
+            <a href="@url" class="pad-rgt">
+                @if (!logo.IsNullOrEmpty())
+                {
+                    <text><img src="@logo" title="@nickName" style="width: 15px; height: 15px;" /></text>
+                }
+                else
+                {
+                    <text>@nickName</text>
+                }
+            </a>
+        }
+
+    </div>
+    <div class="media-body text-left text-bold text-main">
+        Login with
+    </div>
+</div>
+}
